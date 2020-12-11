@@ -8,18 +8,25 @@ CookBook is oriented towards the averagehome cooker to allow them to share their
 
 ## Create Recipe
 Any user can create their own recipe within the CookBook app. This recipe would contain the ingredients, measurements, time, portion size, steps, description, tags and anything pertaining to the preparation of the dish. 
-Moderators can review, modify, or remove recipes according to the guidelines. Create CookbookAny user can group recipes inside of personalized cookbooks. 
+Moderators can review, modify, or remove recipes according to the guidelines. 
+
+## Create Cookbook
+Any user can group recipes inside of personalized cookbooks. 
 These cookbooks can contain any number of recipes the user has found within the CookBook app. 
 Users get to customize their cookbooks with its own name, description and cover image. These cookbooks can be shared and favorited just like recipes. 
 Moderators can review, modify, or remove recipes accordingto the guidelines. 
-Affiliated ContentThe CookBook app supports sponsored or “Affiliated” users who represent popular influencers. Affiliated users can request any of their recipes or cookbooks to be featured on the website. 
+
+## Affiliated Content
+The CookBook app supports sponsored or “Affiliated” users who represent popular influencers. Affiliated users can request any of their recipes or cookbooks to be featured on the website. 
 Moderators will approve or deny featured requests.
 
 ## Search Engine
 Users can search for recipes and/or cookbooks based on category, tags, ingredients, etc. 
 The first recipe in the list of search results will be a featuredrecipe from an affiliated user. The first cookbook in the list of search results will be a featured cookbook from an affiliated user. 
 The featured recipe should match as closely as possible to the search criteria. From this search, auser can view the recipe/cookbook and add it to their favorites. 
-Rate Recipes/CookbooksA recipe/cookbook can be rated by users among different categories i.e. difficulty, enjoyment, etc. The rating system will show the average score on each rated item. 
+
+## Rate Recipes/Cookbooks
+A recipe/cookbook can be rated by users among different categories i.e. difficulty, enjoyment, etc. The rating system will show the average score on each rated item. 
 CookBook will use a standard five-star rating system.  
 The rating system will be incorporated into CookBook’s search feature.   
 
