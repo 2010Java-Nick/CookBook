@@ -4,6 +4,9 @@
 package CookBook;
 
 import org.junit.Test;
+
+import com.revature.CookBook.Library;
+
 import static org.junit.Assert.*;
 
 public class LibraryTest {
