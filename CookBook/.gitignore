@@ -3,3 +3,11 @@
 
 # Ignore Gradle build output directory
 build
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
