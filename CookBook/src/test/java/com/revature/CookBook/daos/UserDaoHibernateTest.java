@@ -61,7 +61,6 @@ public class UserDaoHibernateTest {
 				Transaction tx = session.beginTransaction();
 				session.save(this.user);
 				tx.commit();
-				System.out.println(user);
 				session.close();
 			}
 			catch (Exception e) {
@@ -92,17 +91,102 @@ public class UserDaoHibernateTest {
 	
 	@Test
 	public void createUserTest() {
-		fail("Not yet implemented");
+		Session session;
+		try {			
+			try{
+				userDao.createUser(this.user);
+			}
+			catch (Exception e) {
+				fail("Exception thrown when calling 'createUser' method. " + e);
+			}
+
+		} finally {
+			try{
+				session = sessionFactory.openSession();
+				Transaction tx = session.beginTransaction();
+				session.delete(this.user);
+				tx.commit();
+				session.close();
+			}
+			catch (Exception e) {
+				fail("Exception thrown in test teardown. " + e); 
+			}
+		}
 	}
 	
 	@Test
 	public void updateUserTest() {
-		fail("Not yet implemented");
+		Session session;
+		try {
+			try{
+				session = sessionFactory.openSession();
+				Transaction tx = session.beginTransaction();
+				session.save(this.user);
+				tx.commit();
+				session.close();
+			}
+			catch (Exception e) {
+				fail("Exception thrown in test setup. " + e);
+			}
+			
+			try{
+				user.setFirstName("newFirst");
+				user.setLastName("newLast");
+				user.setAuthorization(new Authorization(2, "AFFILIATED"));
+
+				userDao.updateUser(this.user);
+			}
+			catch (Exception e) {
+				fail("Exception thrown when calling 'updateUser' method. " + e);
+			}
+
+		} finally {
+			try{
+				session = sessionFactory.openSession();
+				Transaction tx = session.beginTransaction();
+				session.delete(this.user);
+				tx.commit();
+				session.close();
+			}
+			catch (Exception e) {
+				fail("Exception thrown in test teardown. " + e); 
+			}
+		}
 	}
 	
 	@Test
 	public void deleteUserTest() {
-		fail("Not yet implemented");
+		Session session;
+		try {
+			try{
+				session = sessionFactory.openSession();
+				Transaction tx = session.beginTransaction();
+				session.save(this.user);
+				tx.commit();
+				session.close();
+			}
+			catch (Exception e) {
+				fail("Exception thrown in test setup. " + e);
+			}
+			
+			try{
+				userDao.deleteUser(this.user.getUserId());
+			}
+			catch (Exception e) {
+				fail("Exception thrown when calling 'deleteUser' method. " + e);
+			}
+
+		} finally {
+			try{
+				session = sessionFactory.openSession();
+				Transaction tx = session.beginTransaction();
+				session.delete(this.user);
+				tx.commit();
+				session.close();
+				fail("Object was not properly deleted from Dao call"); 
+			}
+			catch (Exception e) {}
+		}
 	}
 
 }
