@@ -17,7 +17,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user_profile")
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
 		property = "userId")
@@ -37,13 +37,13 @@ public class User {
 	@Column(name = "passphrase")
 	private String password;
 	
-	@Column(name = "firstName")
+	@Column(name = "first_name")
 	private String firstName;
 	
-	@Column(name = "lastName")
+	@Column(name = "last_name")
 	private String lastName;
 	
 	@OneToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "auth")
 	private Authorization authorization;
 }

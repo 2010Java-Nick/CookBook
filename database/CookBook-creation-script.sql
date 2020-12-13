@@ -1,10 +1,10 @@
--- DROP TABLE recipe;
--- DROP TABLE "user";
--- DROP TABLE cookbook;
--- DROP TABLE cookbook_to_recipe;
--- DROP TABLE "authorization";
--- DROP TABLE user_to_cookbook;
--- DROP TABLE weekly_cookbook;
+--DROP TABLE weekly_cookbook;
+--DROP TABLE user_to_cookbook;
+--DROP TABLE cookbook_to_recipe;
+--DROP TABLE cookbook;
+--DROP TABLE recipe;
+--DROP TABLE user_profile;
+--DROP TABLE auth;
 
 CREATE TABLE recipe (
   "id" serial primary key,
@@ -21,11 +21,11 @@ CREATE TABLE recipe (
   "recipe_image" bytea
 );
 
-CREATE TABLE "user" (
+CREATE TABLE user_profile (
   "id" serial primary key,
   "username" varchar(30) not null,
   "passphrase" varchar(150) not null,
-  "authorization" int4,
+  "auth" int4,
   "first_name" varchar(50) not null,
   "last_name" varchar(50) not null
 );
@@ -44,7 +44,7 @@ CREATE TABLE cookbook_to_recipe (
   PRIMARY KEY(recipe_id, cookbook_id)
 );
 
-CREATE TABLE "authorization" (
+CREATE TABLE auth (
   "id" int4 primary key,
   "level" varchar(30) not null
 );
@@ -70,7 +70,7 @@ CREATE TABLE weekly_cookbook (
 );
 
 ALTER TABLE recipe ADD CONSTRAINT FK_user
-FOREIGN KEY (author) REFERENCES "user" (id) 
+FOREIGN KEY (author) REFERENCES user_profile (id) 
 ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE cookbook_to_recipe ADD CONSTRAINT FK_many_to_cookbook
@@ -81,16 +81,16 @@ ALTER TABLE cookbook_to_recipe ADD CONSTRAINT FK_many_to_recipe
 FOREIGN KEY (recipe_id) REFERENCES recipe (id) 
 ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE "user" ADD CONSTRAINT FK_authorization
-FOREIGN KEY ("authorization") REFERENCES "authorization" (id) 
+ALTER TABLE user_profile ADD CONSTRAINT FK_authorization
+FOREIGN KEY (auth) REFERENCES auth (id) 
 ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE cookbook ADD CONSTRAINT FK_user
-FOREIGN KEY (author) REFERENCES "user" (id) 
+FOREIGN KEY (author) REFERENCES user_profile (id) 
 ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE user_to_cookbook ADD CONSTRAINT FK_user
-FOREIGN KEY (user_id) REFERENCES "user" (id) 
+FOREIGN KEY (user_id) REFERENCES user_profile (id) 
 ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE user_to_cookbook ADD CONSTRAINT FK_cookbook
@@ -128,3 +128,7 @@ ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE weekly_cookbook ADD CONSTRAINT FK_weekly_recipe_7
 FOREIGN KEY (recipe_7) REFERENCES recipe (id) 
 ON DELETE CASCADE ON UPDATE CASCADE;
+
+INSERT INTO auth VALUES (1, 'STANDARD');
+INSERT INTO auth VALUES (2, 'AFFILIATED');
+INSERT INTO auth VALUES (3, 'MODERATOR');
