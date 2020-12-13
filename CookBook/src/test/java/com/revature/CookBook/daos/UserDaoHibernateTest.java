@@ -23,7 +23,6 @@ import com.revature.CookBook.pojos.User;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = AppConfig.class)
-
 public class UserDaoHibernateTest {
 	
 	@Autowired
