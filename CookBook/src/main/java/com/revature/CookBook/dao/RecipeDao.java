@@ -10,7 +10,9 @@ public interface RecipeDao {
 	
 	public List<Recipe> readAllRecipes();
 	
-	public void updateRecipe(int recipeId, Recipe recipe);
+	//public Recipe updateRecipe(int recipeId, Recipe recipe);
+	
+	public void updateRecipe(Recipe recipe);
 	
 	public void deleteRecipe(int recipeId);
 

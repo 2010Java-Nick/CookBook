@@ -15,8 +15,6 @@ import org.springframework.stereotype.Repository;
 
 import com.revature.CookBook.pojos.Recipe;
 
-import HotelReservationSpring.pojos.Guest;
-
 @Repository(value = "recipeDao")
 public class RecipeDaoHibernate implements RecipeDao{
 	
@@ -60,40 +58,46 @@ public class RecipeDaoHibernate implements RecipeDao{
 	}
 
 	@Override
-	public void updateRecipe(int recipeId, Recipe recipe) {
+//	public Recipe updateRecipe(int recipeId, Recipe recipe) {
+	public void updateRecipe(Recipe recipe) {
     Session sess=sessionFactory.openSession();
 		
 		Transaction tx= sess.beginTransaction();
-		
-		Recipe recipe1 = sess.get(Recipe.class,recipeId);
+		//Recipe recipe1 = sess.get(Recipe.class,recipeId);
 		//get guest
 		// change with setter 
 		// sess.update()
 		//merge? update
-		
-		recipe1.setRecipeId(recipe.getRecipeId());
-		recipe1.setName(recipe.getName());
-		recipe1.setAuthor(recipe.getAuthor());
-		recipe1.setFeatured(recipe.getFeatured());
-		recipe1.setServings(recipe.getServings());
-		recipe1.setPrepTime(recipe.getPrepTime());
-		recipe1.setCookTime(recipe.getCookTime());
-		recipe1.setSteps(recipe.getSteps());
-		recipe1.setTags(recipe.getTags());
-		recipe1.setIngredients(recipe.getIngredients());
-		recipe1.setDescription(recipe.getDescription());
+//		recipe1.setRecipeId(recipe.getRecipeId());
+//		recipe1.setName(recipe.getName());
+//		//recipe1.setAuthor(recipe.getAuthor());
+//		//getFeatured?
+//		recipe1.setFeatured(recipe.isFeatured());
+//		recipe1.setServings(recipe.getServings());
+//		recipe1.setPrepTime(recipe.getPrepTime());
+//		recipe1.setCookTime(recipe.getCookTime());
+//		recipe1.setSteps(recipe.getSteps());
+//		recipe1.setTags(recipe.getTags());
+//		recipe1.setIngredients(recipe.getIngredients());
+//		recipe1.setDescription(recipe.getDescription());
 		sess.update(recipe);
-		
 		tx.commit();
 		sess.close();
 		
-		return recipe1;
+		//return recipe1;
 		
 	}
 
 	@Override
 	public void deleteRecipe(int recipeId) {
-		// TODO Auto-generated method stub
+        
+		Recipe recipe = new Recipe();
+		recipe.setRecipeId(recipeId);
+		Session sess=sessionFactory.openSession();
+		Transaction tx= sess.beginTransaction();
+		sess.delete(recipe);
+		tx.commit();
+		sess.close();
 		
 	}
 

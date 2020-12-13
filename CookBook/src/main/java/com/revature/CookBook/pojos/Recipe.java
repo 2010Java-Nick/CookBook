@@ -12,7 +12,9 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 //import HotelReservationSpring.pojos.Room; import user object
 
@@ -25,6 +27,8 @@ import lombok.Data;
 			property = "id")
 
 	@Data
+	@AllArgsConstructor
+	@NoArgsConstructor
 	public class Recipe {
 		
 		@Id
@@ -35,11 +39,11 @@ import lombok.Data;
 		
 		@Column(name = "name")
 		private String name;
-		
-		@ManyToOne
-		@JoinColumn(name = "author")
-		private User user;
-		
+//		
+//		@ManyToOne
+//		@JoinColumn(name = "author")
+//		private User user;
+//		
 		@Column(name = "featured")
 		private boolean featured;
 		
@@ -64,27 +68,6 @@ import lombok.Data;
 		@Column(name = "description")
 		private String description;
 
-		public Recipe(int recipeId, String name, User user, boolean featured, int servings, String prepTime,
-				String cookTime, String steps, String tags, String ingredients, String description) {
-			super();
-			this.recipeId = recipeId;
-			this.name = name;
-			this.user = user;
-			this.featured = featured;
-			this.servings = servings;
-			this.prepTime = prepTime;
-			this.cookTime = cookTime;
-			this.steps = steps;
-			this.tags = tags;
-			this.ingredients = ingredients;
-			this.description = description;
-		}
-
-		public Recipe() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
-		
 		
 	}
 
