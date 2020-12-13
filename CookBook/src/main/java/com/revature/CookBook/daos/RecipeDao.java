@@ -1,10 +1,12 @@
-package com.revature.CookBook.dao;
+package com.revature.CookBook.daos;
 
 import java.util.List;
 
 import com.revature.CookBook.pojos.Recipe;
 
 public interface RecipeDao {
+	
+	public Recipe readRecipe(int recipeId);
 	
 	public Recipe createRecipe(Recipe recipe);
 	

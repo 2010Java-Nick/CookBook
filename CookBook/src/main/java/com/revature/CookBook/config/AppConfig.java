@@ -20,7 +20,7 @@ import com.revature.CookBook.util.SessionFactoryUtil;
 
 //configuration can also be done in a spring-beans.xml file
 @Configuration
-@ComponentScan(value = "CookBook")
+@ComponentScan(value = "com.revature.CookBook")
 @EnableAspectJAutoProxy
 @EnableWebMvc
 public class AppConfig implements WebApplicationInitializer {

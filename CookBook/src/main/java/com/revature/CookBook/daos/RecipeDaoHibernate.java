@@ -1,4 +1,4 @@
-package com.revature.CookBook.dao;
+package com.revature.CookBook.daos;
 
 import java.util.List;
 
@@ -14,24 +14,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.revature.CookBook.pojos.Recipe;
+import com.revature.CookBook.pojos.User;
 
 @Repository(value = "recipeDao")
 public class RecipeDaoHibernate implements RecipeDao{
 	
-	//@Autowired
-		SessionFactory sessionFactory;
-		
-		//@Autowired
-		public RecipeDaoHibernate(SessionFactory sessionFactory) {
-			super();
-			this.sessionFactory = sessionFactory;
-		}
+	SessionFactory sessionFactory;
 
-		@Autowired
-		public void setSessionFactory(SessionFactory sessionFactory) {
-			this.sessionFactory = sessionFactory;
-		}
-
+	@Autowired
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	@Override
+	public Recipe readRecipe(int id) {
+		Recipe recipe = null;
+		Session session = sessionFactory.openSession();
+		recipe = session.get(Recipe.class, id);
+		session.close();
+		return recipe;
+	}
 	
 	@Override
 	public Recipe createRecipe(Recipe recipe) {
@@ -100,5 +101,6 @@ public class RecipeDaoHibernate implements RecipeDao{
 		sess.close();
 		
 	}
+
 
 }
