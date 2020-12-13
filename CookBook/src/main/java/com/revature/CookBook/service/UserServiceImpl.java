@@ -1,10 +1,9 @@
 package com.revature.CookBook.service;
 
-import java.sql.SQLException;
-
 import com.revature.CookBook.daos.UserDao;
 import com.revature.CookBook.pojos.User;
 
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +25,7 @@ public class UserServiceImpl implements UserService {
         try {
             user = userDao.readUser(userId);
 
-        } catch (SQLException e){ }
+        } catch (HibernateException e){ }
 
         return user;
     }
@@ -38,7 +37,7 @@ public class UserServiceImpl implements UserService {
             userDao.createUser(user);
             return true;
 
-        } catch (SQLException e){
+        } catch (HibernateException e){
             return false;
         }
     }
@@ -50,7 +49,7 @@ public class UserServiceImpl implements UserService {
             userDao.updateUser(user);
             return true;
 
-        } catch (SQLException e){
+        } catch (HibernateException e){
             return false;
         }
     }
@@ -62,7 +61,7 @@ public class UserServiceImpl implements UserService {
             userDao.deleteUser(userId);
             return true;
 
-        } catch (SQLException e){
+        } catch (HibernateException e){
             return false;
         }
     }

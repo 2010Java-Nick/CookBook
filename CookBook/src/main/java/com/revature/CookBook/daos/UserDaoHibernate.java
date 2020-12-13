@@ -1,12 +1,11 @@
 package com.revature.CookBook.daos;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.sql.SQLException;
 
 import com.revature.CookBook.pojos.User;
 
@@ -21,7 +20,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 	
 	@Override
-	public User readUser(int id) throws SQLException {
+	public User readUser(int id) throws HibernateException {
 		
 		User user = null;
 		Session session = sessionFactory.openSession();
@@ -31,7 +30,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 
 	@Override
-	public void createUser(User user) throws SQLException {
+	public void createUser(User user) throws HibernateException {
 		
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -41,7 +40,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 
 	@Override
-	public void updateUser(User user) throws SQLException {
+	public void updateUser(User user) throws HibernateException {
 		
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -51,7 +50,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 
 	@Override
-	public void deleteUser(int id) throws SQLException {
+	public void deleteUser(int id) throws HibernateException {
 		
 		User user = new User();
 		user.setUserId(id);
