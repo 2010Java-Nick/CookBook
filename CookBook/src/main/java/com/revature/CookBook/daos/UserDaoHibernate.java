@@ -21,7 +21,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 	
 	@Override
-	public User readUser(int id) throws SQLException{
+	public User readUser(int id) throws SQLException {
 		
 		User user = null;
 		Session session = sessionFactory.openSession();
@@ -31,7 +31,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 
 	@Override
-	public void createUser(User user) throws SQLException{
+	public void createUser(User user) throws SQLException {
 		
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -41,7 +41,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 
 	@Override
-	public void updateUser(User user) throws SQLException{
+	public void updateUser(User user) throws SQLException {
 		
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -51,7 +51,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 
 	@Override
-	public void deleteUser(int id) throws SQLException{
+	public void deleteUser(int id) throws SQLException {
 		
 		User user = new User();
 		user.setUserId(id);
