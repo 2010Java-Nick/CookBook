@@ -6,9 +6,11 @@ import java.util.Map;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+import com.revature.CookBook.pojos.Authorization;
+import com.revature.CookBook.pojos.User;
 
 public class SessionFactoryUtil {
 	
@@ -38,7 +40,8 @@ public class SessionFactoryUtil {
 			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().applySettings(settings).build();
 			
 			Metadata metadata = new MetadataSources(standardRegistry)
-						//.addAnnotatedClass(Guest.class)
+						.addAnnotatedClass(User.class)
+						.addAnnotatedClass(Authorization.class)
 						.getMetadataBuilder()
 						.build();
 			

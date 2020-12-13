@@ -8,7 +8,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class SessionFactoryUtilTest {
 
@@ -35,6 +34,7 @@ public class SessionFactoryUtilTest {
 		
 		try {
 			sessionFactoryUtil = SessionFactoryUtil.getSessionFactoryUtil();
+			SessionFactory sess = sessionFactoryUtil.getSessionFactory();
 		}
 		catch(Exception e) {
 			fail("Threw exception. " + e);
