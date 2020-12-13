@@ -16,16 +16,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//import HotelReservationSpring.pojos.Room; import user object
-
-
 @Entity
-@Table(name = "Recipe")
+@Table(name = "recipe")
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
-		//recipe ID
-		property = "id")
-
+		property = "recipeId")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -51,10 +46,10 @@ public class Recipe {
 	private int servings;
 	
 	@Column(name = "prep_time")
-	private String prepTime;
+	private int prepTime;
 	
 	@Column(name = "cook_time")
-	private String cookTime;
+	private int cookTime;
 
 	@Column(name = "steps")
 	private String steps;
@@ -67,7 +62,27 @@ public class Recipe {
 	
 	@Column(name = "description")
 	private String description;
+	
+	@Column(name = "recipe_image")
+	private byte[] recipeImage;
 
+	public Recipe(String name, User user, boolean featured, int servings, int prepTime, int cookTime, String steps,
+			String tags, String ingredients, String description, byte[] recipeImage) {
+		super();
+		this.name = name;
+		this.user = user;
+		this.featured = featured;
+		this.servings = servings;
+		this.prepTime = prepTime;
+		this.cookTime = cookTime;
+		this.steps = steps;
+		this.tags = tags;
+		this.ingredients = ingredients;
+		this.description = description;
+		this.recipeImage = recipeImage;
+	}
+	
+	
 	
 }
 

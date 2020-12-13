@@ -15,7 +15,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "authorization")
+@Table(name = "auth")
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
 		property = "id")

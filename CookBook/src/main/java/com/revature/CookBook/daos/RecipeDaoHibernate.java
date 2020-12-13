@@ -26,10 +26,10 @@ public class RecipeDaoHibernate implements RecipeDao{
 		this.sessionFactory = sessionFactory;
 	}
 	@Override
-	public Recipe readRecipe(int id) {
+	public Recipe readRecipe(int recipeId) {
 		Recipe recipe = null;
 		Session session = sessionFactory.openSession();
-		recipe = session.get(Recipe.class, id);
+		recipe = session.get(Recipe.class, recipeId);
 		session.close();
 		return recipe;
 	}
