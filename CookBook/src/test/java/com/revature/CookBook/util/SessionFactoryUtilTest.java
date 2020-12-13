@@ -34,12 +34,14 @@ public class SessionFactoryUtilTest {
 		
 		try {
 			sessionFactoryUtil = SessionFactoryUtil.getSessionFactoryUtil();
-			SessionFactory sess = sessionFactoryUtil.getSessionFactory();
+			SessionFactory session = sessionFactoryUtil.getSessionFactory();
+			if (session == null){
+				fail("Session factory was returned as null");
+			}
 		}
 		catch(Exception e) {
 			fail("Threw exception. " + e);
 		}
-		
 	}
 
 }
