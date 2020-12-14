@@ -50,7 +50,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 
 	@Override
-	public void deleteUser(int id) throws HibernateException{
+	public void deleteUser(int id) throws HibernateException {
 		
 		User user = new User();
 		user.setUserId(id);
