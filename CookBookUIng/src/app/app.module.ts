@@ -8,6 +8,9 @@ import { SiteComponent } from './components/site/site.component';
 import { NavbarComponent } from './components/site/navbar/navbar.component';
 import { SidebarComponent } from './components/site/sidebar/sidebar.component';
 import { TitleComponent } from './components/landing/title/title.component';
+import { ViewAccountCreationComponent } from './components/landing/view-account-creation/view-account-creation.component';
+import { ViewUserHomeComponent } from './components/site/view-user-home/view-user-home.component';
+import { ViewModeratorHomeComponent } from './components/site/view-moderator-home/view-moderator-home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { TitleComponent } from './components/landing/title/title.component';
     SiteComponent,
     NavbarComponent,
     SidebarComponent,
-    TitleComponent
+    TitleComponent,
+    ViewAccountCreationComponent,
+    ViewUserHomeComponent,
+    ViewModeratorHomeComponent
   ],
   imports: [
     BrowserModule,
