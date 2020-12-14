@@ -19,8 +19,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "user_profile")
 @JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class, 
-		property = "userId")
+        generator = ObjectIdGenerators.PropertyGenerator.class, 
+        property = "userId")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
