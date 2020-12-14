@@ -1,5 +1,6 @@
 package com.revature.CookBook.daos;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,7 +20,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 	
 	@Override
-	public User readUser(int id) {
+	public User readUser(int id) throws HibernateException {
 		
 		User user = null;
 		Session session = sessionFactory.openSession();
@@ -29,7 +30,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 
 	@Override
-	public void createUser(User user) {
+	public void createUser(User user) throws HibernateException {
 		
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -39,7 +40,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 
 	@Override
-	public void updateUser(User user) {
+	public void updateUser(User user) throws HibernateException {
 		
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -49,7 +50,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 
 	@Override
-	public void deleteUser(int id) {
+	public void deleteUser(int id) throws HibernateException{
 		
 		User user = new User();
 		user.setUserId(id);

@@ -1,17 +1,23 @@
 package com.revature.CookBook.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import com.revature.CookBook.daos.RecipeDao;
 import com.revature.CookBook.pojos.Recipe;
 
 public interface RecipeService {
+	
+	public Recipe readRecipe( int recipeId)throws SQLException;
 
-	public Recipe createRecipe(Recipe recipe);
+	public boolean createRecipe(Recipe recipe);
 	
-	public List<Recipe> getAllRecipe();
+	public List<Recipe> getAllRecipes();
 	
-	public void updateRecipe(int recipeId, Recipe recipe); //maybe add exception?
+	public boolean updateRecipe(Recipe recipe); //maybe add exception?
 	
-	public void deleteRecipe(int recipeId);
+	public boolean deleteRecipe(int recipeId);
+	
+	public void setRecipeDao(RecipeDao recipeDao);
 	
 }

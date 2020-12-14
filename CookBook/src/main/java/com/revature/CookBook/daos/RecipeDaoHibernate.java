@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -26,7 +27,7 @@ public class RecipeDaoHibernate implements RecipeDao{
 		this.sessionFactory = sessionFactory;
 	}
 	@Override
-	public Recipe readRecipe(int recipeId) {
+	public Recipe readRecipe(int recipeId) throws HibernateException {
 		Recipe recipe = null;
 		Session session = sessionFactory.openSession();
 		recipe = session.get(Recipe.class, recipeId);
@@ -35,17 +36,17 @@ public class RecipeDaoHibernate implements RecipeDao{
 	}
 	
 	@Override
-	public Recipe createRecipe(Recipe recipe) {
+	public void createRecipe(Recipe recipe) throws HibernateException{
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
 		sess.save(recipe);
 		tx.commit();
 		sess.close();
-		return recipe;
+		//return recipe;
 	}
 
 	@Override
-	public List<Recipe> readAllRecipes() {
+	public List<Recipe> readAllRecipes() throws HibernateException{
 		List<Recipe> recipeList = null;
 		Session sess = sessionFactory.openSession();
 		CriteriaBuilder cb = sess.getCriteriaBuilder();
@@ -60,7 +61,7 @@ public class RecipeDaoHibernate implements RecipeDao{
 
 	@Override
 //	public Recipe updateRecipe(int recipeId, Recipe recipe) {
-	public void updateRecipe(Recipe recipe) {
+	public void updateRecipe(Recipe recipe) throws HibernateException {
     Session sess=sessionFactory.openSession();
 		
 		Transaction tx= sess.beginTransaction();
@@ -90,7 +91,7 @@ public class RecipeDaoHibernate implements RecipeDao{
 	}
 
 	@Override
-	public void deleteRecipe(int recipeId) {
+	public void deleteRecipe(int recipeId) throws HibernateException {
         
 		Recipe recipe = new Recipe();
 		recipe.setRecipeId(recipeId);

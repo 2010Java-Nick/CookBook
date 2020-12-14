@@ -136,11 +136,16 @@ public class RecipeDaoHibernateTest {
 				recipe.setName("different name");
 				recipe.setFeatured(false);
 				recipe.setServings(10);
-				recipe.setPrepTime(prepTime);
+				recipe.setPrepTime(10);
+				recipe.setCookTime(20);
+				recipe.setSteps("new steps 1, 2 3 4,");
+				recipe.setTags("tag1,tag2,tag3");
+				recipe.setIngredients("ingredient 1, ingredient 2, ingredient 3");
+				recipe.setDescription("description change");
 				recipeDao.updateRecipe(this.recipe);
 			}
 			catch (Exception e) {
-				fail("Exception thrown when calling 'updateUser' method. " + e);
+				fail("Exception thrown when calling 'updateRecipe' method. " + e);
 			}
 
 		} finally {
@@ -164,7 +169,7 @@ public class RecipeDaoHibernateTest {
 			try{
 				session = sessionFactory.openSession();
 				Transaction tx = session.beginTransaction();
-				session.save(this.user);
+				session.save(this.recipe);
 				tx.commit();
 				session.close();
 			}
@@ -173,17 +178,17 @@ public class RecipeDaoHibernateTest {
 			}
 			
 			try{
-				userDao.deleteUser(this.user.getUserId());
+				recipeDao.deleteRecipe(this.recipe.getRecipeId());
 			}
 			catch (Exception e) {
-				fail("Exception thrown when calling 'deleteUser' method. " + e);
+				fail("Exception thrown when calling 'deleteRecipe' method. " + e);
 			}
 
 		} finally {
 			try{
 				session = sessionFactory.openSession();
 				Transaction tx = session.beginTransaction();
-				session.delete(this.user);
+				session.delete(this.recipe);
 				tx.commit();
 				session.close();
 				fail("Object was not properly deleted from Dao call"); 
