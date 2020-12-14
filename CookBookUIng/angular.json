@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "CookBookUIng"
+  "defaultProject": "CookBookUIng",
+  "cli": {
+    "analytics": "40e16d35-bafb-4390-9b5b-57f5833bd2fd"
+  }
 }
