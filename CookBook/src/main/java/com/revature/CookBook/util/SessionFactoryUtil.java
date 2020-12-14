@@ -10,6 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import com.revature.CookBook.pojos.Authorization;
+import com.revature.CookBook.pojos.Recipe;
 import com.revature.CookBook.pojos.User;
 
 public class SessionFactoryUtil {
@@ -42,6 +43,7 @@ public class SessionFactoryUtil {
 			Metadata metadata = new MetadataSources(standardRegistry)
 						.addAnnotatedClass(User.class)
 						.addAnnotatedClass(Authorization.class)
+						.addAnnotatedClass(Recipe.class)
 						.getMetadataBuilder()
 						.build();
 			

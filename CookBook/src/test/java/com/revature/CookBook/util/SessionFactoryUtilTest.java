@@ -42,7 +42,6 @@ public class SessionFactoryUtilTest {
 		catch(Exception e) {
 			fail("Threw exception. " + e);
 		}
-		
 	}
 
 }
