@@ -1,4 +1,4 @@
-package com.revature.CookBook.Dto;
+package com.revature.CookBook.dto;
 
 
 import com.revature.CookBook.pojos.Recipe;
