@@ -1,13 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SiteComponent } from './site.component';
+import { ViewModeratorHomeComponent } from './view-moderator-home/view-moderator-home.component';
+import { ViewUserHomeComponent } from './view-user-home/view-user-home.component';
 
 const routes: Routes = [
-  { path: '', component: SiteComponent }
+  {
+    path: '',
+    component: SiteComponent,
+    children: [
+      { path: '', component: ViewUserHomeComponent },
+      { path: 'mod', component: ViewModeratorHomeComponent }
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SiteRoutingModule { }
+export class SiteRoutingModule {}
