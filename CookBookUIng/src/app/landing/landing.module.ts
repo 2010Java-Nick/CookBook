@@ -16,6 +16,9 @@ import { ViewAccountCreationComponent } from './view-account-creation/view-accou
   imports: [
     CommonModule,
     LandingRoutingModule
+  ],
+  bootstrap: [
+    LandingComponent
   ]
 })
 export class LandingModule { }
