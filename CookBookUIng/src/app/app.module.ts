@@ -11,6 +11,8 @@ import { TitleComponent } from './components/landing/title/title.component';
 import { ViewAccountCreationComponent } from './components/landing/view-account-creation/view-account-creation.component';
 import { ViewUserHomeComponent } from './components/site/view-user-home/view-user-home.component';
 import { ViewModeratorHomeComponent } from './components/site/view-moderator-home/view-moderator-home.component';
+import { ViewARecipeComponent } from './components/site/view-a-recipe/view-a-recipe.component';
+import { ViewCreateRecipeComponent } from './components/site/view-create-recipe/view-create-recipe.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ViewModeratorHomeComponent } from './components/site/view-moderator-hom
     TitleComponent,
     ViewAccountCreationComponent,
     ViewUserHomeComponent,
-    ViewModeratorHomeComponent
+    ViewModeratorHomeComponent,
+    ViewARecipeComponent,
+    ViewCreateRecipeComponent
   ],
   imports: [
     BrowserModule,
