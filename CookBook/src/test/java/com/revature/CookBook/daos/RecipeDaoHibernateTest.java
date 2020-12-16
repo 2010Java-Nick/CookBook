@@ -163,7 +163,7 @@ public class RecipeDaoHibernateTest {
 	}
 	
 	@Test
-	public void deleteUserTest() {
+	public void deleteRecipeTest() {
 		Session session;
 		try {
 			try{
