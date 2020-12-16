@@ -1,5 +1,6 @@
 export interface Recipe {
 
+    name : string;
     author : string;
     featured : string;
     servings : number;
