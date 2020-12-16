@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.CookBook.dto.Dto;
 import com.revature.CookBook.dto.RecipeDto;
 import com.revature.CookBook.pojos.Recipe;
 import com.revature.CookBook.service.RecipeService;
@@ -26,22 +27,27 @@ public class RecipeController {
 		this.recipeService = recipeService;
 	}
 
-//	@RequestMapping(path = "/view-a-recipe", method = RequestMethod.GET)
-//	@ResponseBody
-//	public ResponseEntity<RecipeDto> createRecipe(@RequestBody RecipeDto recipe) {
-//
-//		Recipe newRecipe = recipeService.readRecipe(recipe.toPojo());
-//		
-//		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>(new RecipeDto(newGuest), HttpStatus.CREATED);
-//		
-//		return re;
+	@RequestMapping(path = "/createRecipe", method = RequestMethod.GET)
+	public String createRecipe(@RequestBody RecipeDto recipe) {
 
-//	}
+		recipeService.createRecipe(recipe.toPojo());
+		
+		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>( HttpStatus.CREATED);
+		
+		return "created";
+	}
 	
-	@RequestMapping(path = "recipe/{recipeId}", method = RequestMethod.GET , produces = "text/plain")
+	@RequestMapping(path = "recipe/{recipeId}", method = RequestMethod.GET )
 	public String readRecipe(@PathVariable(name = "recipeId")int recipeId) {
-		return "hello";
+		Recipe recipe= recipeService.readRecipe(recipeId);
+		
+		return recipe.toString();
 	}
 
+	@RequestMapping(path = "/updateRecipe", method = RequestMethod.POST)
+	public void updateRecipe(RecipeDto recipe) {
+		
+		recipeService.updateRecipe(recipe.toPojo());
+	}
 
 }
