@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { LandingModule } from './landing/landing.module';
 import { SiteModule } from './site/site.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RecipeItemComponent } from './src/app/site/recipe-item/recipe-item.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipeItemComponent
+    
   ],
   imports: [
     BrowserModule,
