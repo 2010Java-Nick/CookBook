@@ -23,13 +23,11 @@ export class ViewAccountCreationComponent implements OnInit {
       this.user.password === undefined
     ) {
       console.log('Please fill out form!');
-    } else if (!(this.user.password === this.reenterPassword)){
+    } else if (this.user.password !== this.reenterPassword){
       console.log(`Passwords don't match`);
     }
     else {
-      console.log(
-        `User: ${this.user.firstName} ${this.user.lastName} ${this.user.username} ${this.user.password} ${this.reenterPassword} `
-      );
+      this.accountService.createNewUser(this.user);
     }
   }
 }

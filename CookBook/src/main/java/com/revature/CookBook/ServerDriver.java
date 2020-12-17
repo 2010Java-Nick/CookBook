@@ -16,7 +16,7 @@ public class ServerDriver {
     public static void main(String[] args) throws LifecycleException, ServletException {
 
         Tomcat server = new Tomcat();
-        server.setPort(80);
+        server.setPort(9091);
         server.getConnector();
         server.addWebapp("", new File("./").getAbsolutePath());
         server.start();
