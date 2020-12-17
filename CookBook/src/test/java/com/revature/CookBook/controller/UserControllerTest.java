@@ -2,6 +2,7 @@ package com.revature.CookBook.controller;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -127,7 +128,7 @@ public class UserControllerTest {
 					.perform(MockMvcRequestBuilders.get("/user/{username}", this.user.getUsername())
 							.accept(MediaType.APPLICATION_JSON))
 					.andDo(print()).andExpect(status().isOk())
-					.andExpect(MockMvcResultMatchers.jsonPath("$").value(userJson));
+					.andExpect(MockMvcResultMatchers.content().string(userJson));
 		} catch (Exception e) {
 			fail("Method readUser threw an exception: " + e);
 		}
