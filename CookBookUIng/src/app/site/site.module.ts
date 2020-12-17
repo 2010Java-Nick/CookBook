@@ -9,6 +9,7 @@ import { ViewUserHomeComponent } from './view-user-home/view-user-home.component
 import { SiteComponent } from './site.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 import { ViewARecipeComponent} from './view-a-recipe/view-a-recipe.component'
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { ViewARecipeComponent} from './view-a-recipe/view-a-recipe.component'
   ],
   imports: [
     CommonModule,
-    SiteRoutingModule
-  ]
+    SiteRoutingModule,
+    HttpClientModule
+  ],
+  providers: [HttpClient]
 })
 export class SiteModule { }

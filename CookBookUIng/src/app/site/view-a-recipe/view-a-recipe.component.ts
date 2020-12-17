@@ -7,12 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewARecipeComponent implements OnInit {
 
- 
-  }
+  
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

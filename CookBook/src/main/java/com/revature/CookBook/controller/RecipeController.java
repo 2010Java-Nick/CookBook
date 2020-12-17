@@ -38,10 +38,10 @@ public class RecipeController {
 	}
 	
 	@RequestMapping(path = "recipe/{recipeId}", method = RequestMethod.GET )
-	public String readRecipe(@PathVariable(name = "recipeId")int recipeId) {
+	public Recipe readRecipe(@PathVariable(name = "recipeId")int recipeId) {
 		Recipe recipe= recipeService.readRecipe(recipeId);
 		
-		return recipe.toString();
+		return recipe;
 	}
 
 	@RequestMapping(path = "/updateRecipe", method = RequestMethod.POST)
