@@ -7,9 +7,13 @@ import {Recipe} from '../models/recipe.model'
   providedIn: 'root'
 })
 export class ViewARecipeService {
+
+  
+  // NEED TO GET THE ID SOMEWHERE
+
   public recipeId : number = 1 ; 
 
-  private readonly RECIPE_URL = 'http://localhost:9091/recipe/1' ;
+  private readonly RECIPE_URL = 'http://localhost:9091/recipe/' + this.recipeId ;
 
 
   constructor(private httpClient: HttpClient) { }
