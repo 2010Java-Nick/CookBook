@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {Recipe} from '../../models/recipe.model';
 import { ViewARecipeService} from '../../services/view-a-recipe.service'
 
@@ -9,8 +9,8 @@ import { ViewARecipeService} from '../../services/view-a-recipe.service'
 })
 export class ViewCreateRecipeComponent implements OnInit {
 
-  recipe!:Recipe;
-
+  @Input() recipe!:Recipe;
+  
 
   constructor() { }
 

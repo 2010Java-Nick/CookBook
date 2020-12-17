@@ -13,8 +13,8 @@ const routes: Routes = [
     children: [
       { path: '', component: ViewUserHomeComponent },
       { path: 'mod', component: ViewModeratorHomeComponent },
-      { path : 'view-a-recipe', component : ViewARecipeComponent},
-      { path : 'create-recipe', component : ViewCreateRecipeComponent}
+      { path : 'recipe', component : ViewARecipeComponent},
+      { path : 'createRecipe', component : ViewCreateRecipeComponent}
     ],
   },
 ];

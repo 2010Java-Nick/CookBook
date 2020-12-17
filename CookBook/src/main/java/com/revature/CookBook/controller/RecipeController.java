@@ -27,7 +27,7 @@ public class RecipeController {
 		this.recipeService = recipeService;
 	}
 
-	@RequestMapping(path = "/createRecipe", method = RequestMethod.GET)
+	@RequestMapping(path = "/createRecipe", method = RequestMethod.POST)
 	public String createRecipe(@RequestBody RecipeDto recipe) {
 
 		recipeService.createRecipe(recipe.toPojo());
@@ -44,7 +44,7 @@ public class RecipeController {
 		return recipe;
 	}
 
-	@RequestMapping(path = "/updateRecipe", method = RequestMethod.POST)
+	@RequestMapping(path = "/updateRecipe", method = RequestMethod.PUT)
 	public void updateRecipe(RecipeDto recipe) {
 		
 		recipeService.updateRecipe(recipe.toPojo());
