@@ -5,12 +5,11 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.CookBook.daos.UserDao;
+import com.revature.CookBook.config.TestConfig;
 import com.revature.CookBook.dto.UserDto;
 import com.revature.CookBook.pojos.User;
 import com.revature.CookBook.service.UserService;
 
-import org.hibernate.SessionFactory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,7 +18,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -28,34 +26,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { UserControllerTest.TestConfig.class })
+@ContextConfiguration(classes = { TestConfig.class })
 @WebAppConfiguration
 public class UserControllerTest {
-
-	@EnableWebMvc
-	public static class TestConfig {
-
-		@Bean
-		public SessionFactory sessionFactory() {
-
-			return Mockito.mock(SessionFactory.class);
-		}
-
-		@Bean
-		public UserDao userDao() {
-
-			return Mockito.mock(UserDao.class);
-		}
-
-		@Bean
-		public UserService userService() {
-
-			return Mockito.mock(UserService.class);
-		}
-	}
 
 	@Mock
 	private UserService userService;
