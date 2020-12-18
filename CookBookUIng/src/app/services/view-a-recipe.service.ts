@@ -13,7 +13,7 @@ export class ViewARecipeService {
 
   public recipeId : number = 1 ; 
 
-  private readonly RECIPE_URL = 'http://localhost:9091/recipe/' + this.recipeId ;
+  private readonly RECIPE_URL = 'http://localhost:9091/recipe';
 
 
   constructor(private httpClient: HttpClient) { }

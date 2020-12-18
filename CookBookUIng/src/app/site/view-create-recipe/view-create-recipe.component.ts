@@ -12,13 +12,35 @@ export class ViewCreateRecipeComponent implements OnInit {
   //@Input() recipe!:Recipe;
   recipe={} as Recipe;
 
-  constructor(private recipeService : ViewARecipeService) { }
+  createRecipeForm;
 
-  ngOnInit(): void {
+  constructor(
+    private recipeService : ViewARecipeService,
+    private formBuilder: FormBuilder,
+  ) { 
+    this.createRecipeForm =this.formBuilder.group({
+      name:'',
+      servings: 0,
+      prepTime:0,
+      cookTime:0,
+      steps:'',
+      tags:'',
+      ingredients:'',
+      description:''
+    });
   }
 
+  ngOnInit(): void {
+    
+  }
   public formCreateRecipe(): void {
     //console.log(this.recipe.name);
     this.recipeService.createRecipe(this.recipe);
+  }
+  onSubmit(customerData: any) {
+    // Process checkout data here
+    this.createRecipeForm.reset();
+
+    console.warn('Your recipe has been submitted', customerData);
   }
 }

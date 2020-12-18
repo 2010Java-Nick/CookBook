@@ -28,13 +28,13 @@ public class RecipeController {
 	}
 
 	@RequestMapping(path = "/recipe", method = RequestMethod.POST)
-	public String createRecipe(@RequestBody RecipeDto recipe) {
+	public Boolean createRecipe(@RequestBody RecipeDto recipe) {
 
 		recipeService.createRecipe(recipe.toPojo());
 		
 		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>( HttpStatus.CREATED);
 		
-		return "created";
+		return true;
 	}
 	
 	@RequestMapping(path = "recipe/{recipeId}", method = RequestMethod.GET )

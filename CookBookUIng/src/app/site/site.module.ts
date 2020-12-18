@@ -9,7 +9,7 @@ import { SiteComponent } from './site.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 import { ViewARecipeComponent} from './view-a-recipe/view-a-recipe.component'
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewCreateRecipeComponent } from './view-create-recipe/view-create-recipe.component';
 
 
@@ -28,7 +28,8 @@ import { ViewCreateRecipeComponent } from './view-create-recipe/view-create-reci
     CommonModule,
     SiteRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [HttpClient]
 })

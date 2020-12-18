@@ -1,40 +1,42 @@
 <h1> Create a New Recipe! </h1>
 <div class ="container mb-3 ">
-<form #createRecipeForm="ngForm" (ngSubmit)="formCreateRecipe()">
+<form [formGroup]="createRecipeForm" 
+        (ngSubmit)="onSubmit(createRecipeForm.value)">
     <div class="form-group">
+        
         <label for="name">Recipe Name </label>
-    <input [(ngModel)]="recipe.name" name="recipename" class="form-control" type="text" placeholder="Recipe Name" id="Recipe Name" />
+    <input formControlName="name" name="recipename" class="form-control" type="text" placeholder="Recipe Name" id="Recipe Name" />
     </div>
     <div class="form-group">
         <label for="servings">Servings </label>
-    <input [(ngModel)]="recipe.servings" name="servings" class="form-control" type="text" placeholder="Number of Servings" id="servings" />
+    <input  formControlName="servings" name="servings" class="form-control" type="text" placeholder="Number of Servings" id="servings" />
     </div>
     <div class="form-group">
         <label for="prepTime">Preparation Time</label>
-    <input [(ngModel)]="recipe.prepTime" name="prepTime" class="form-control" type="text" placeholder="Preparation Time" id="prepTime" />
+    <input  formControlName="prepTime" name="prepTime" class="form-control" type="text" placeholder="Preparation Time" id="prepTime" />
     </div>
     <div class="form-group">
         <label for="cookTime">Cook Time </label>
-    <input [(ngModel)]="recipe.cookTime" name="cookTime" class="form-control" type="text" placeholder="Cook Time" id="cookTime" />
+    <input  formControlName="cookTime" name="cookTime" class="form-control" type="text" placeholder="Cook Time" id="cookTime" />
     </div>
     <div class="form-group">
         <label for="steps">Steps</label>
-    <textarea [(ngModel)]="recipe.steps" name="steps" class="form-control" type="text" placeholder="steps" id="Steps List" ></textarea>
+    <textarea  formControlName="steps" name="steps" class="form-control" type="text" placeholder="steps" id="Steps List" ></textarea>
     </div>
 
     <div class="form-group">
         <label for="tags">Tags </label>
-    <input [(ngModel)]="recipe.tags" name="tags" class="form-control" type="text" placeholder="dinner pasta veggie" id="tags" />
+    <input formControlName="tags" name="tags" class="form-control" type="text" placeholder="dinner pasta veggie" id="tags" />
     </div>
     
     <div class="form-group">
         <label for="ingredients">Ingredients</label>
-    <textarea [(ngModel)]="recipe.ingredients" name="ingredients" class="form-control" type="text" placeholder="Ingredients List" id="ingredients" ></textarea>
+    <textarea  formControlName="ingredients" name="ingredients" class="form-control" type="text" placeholder="Ingredients List" id="ingredients" ></textarea>
     </div>
     
     <div class="form-group">
         <label for="description">Description</label>
-        <textarea [(ngModel)]="recipe.description" name="description" class="form-control" type="text" placeholder="Description" id="description" ></textarea>
+        <textarea  formControlName="description" name="description" class="form-control" type="text" placeholder="Description" id="description" ></textarea>
     </div>
 
     <div class="input-group mb-3">
@@ -48,6 +50,5 @@
     </div>
 
     <button id="createRecipe" type="submit" class="btn btn-success" >Submit</button>
-
 </form>
 </div>
