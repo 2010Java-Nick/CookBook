@@ -12,11 +12,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RecipeDto implements Dto<Recipe>{
 	
+	private int id;
+	
 	private String name;
 	
 	private String author;
 	
-	private String featured;
+	private boolean featured;
 	
 	private int servings;
 	
@@ -37,8 +39,10 @@ public class RecipeDto implements Dto<Recipe>{
 	
 	public RecipeDto(Recipe recipe) {
 		super();
+		this.id=recipe.getRecipeId();
 		this.name= recipe.getName();
-		this.featured = Boolean.toString(recipe.isFeatured());
+		this.author= recipe.getUser().getUsername();
+		this.featured = recipe.isFeatured();
 		this.servings= recipe.getServings();
 		this.prepTime=recipe.getPrepTime();
 		this.cookTime=recipe.getCookTime();
@@ -47,7 +51,7 @@ public class RecipeDto implements Dto<Recipe>{
 		this.ingredients=recipe.getIngredients();
 		this.description=recipe.getDescription();
 		this.recipeImage=recipe.getRecipeImage();
-		this.author= recipe.getUser().getUsername();
+		
 		
 		
 	}
@@ -55,8 +59,9 @@ public class RecipeDto implements Dto<Recipe>{
 	@Override
 	public Recipe toPojo() {
 		Recipe recipe = new Recipe();
+		recipe.setRecipeId(this.getId());
 		recipe.setName(this.getName());
-		recipe.setFeatured(Boolean.parseBoolean(this.getFeatured()));
+		recipe.setFeatured(this.isFeatured());
 		recipe.setServings(this.getServings());
 		recipe.setPrepTime(this.getPrepTime());
 		recipe.setCookTime(this.getCookTime());

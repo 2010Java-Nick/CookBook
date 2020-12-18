@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {Recipe} from '../../models/recipe.model';
 import { ViewARecipeService} from '../../services/view-a-recipe.service'
-
+import { FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-view-create-recipe',
   templateUrl: './view-create-recipe.component.html',
@@ -9,21 +9,16 @@ import { ViewARecipeService} from '../../services/view-a-recipe.service'
 })
 export class ViewCreateRecipeComponent implements OnInit {
 
-  @Input() recipe!:Recipe;
-  
+  //@Input() recipe!:Recipe;
+  recipe={} as Recipe;
 
-  constructor() { }
+  constructor(private recipeService : ViewARecipeService) { }
 
   ngOnInit(): void {
   }
 
   public formCreateRecipe(): void {
-    this.recipe.name;
-    this.recipe.servings;
-    this.recipe.cookTime;
-    this.recipe.prepTime;
-    this.recipe.ingredients;
-
-
+    //console.log(this.recipe.name);
+    this.recipeService.createRecipe(this.recipe);
   }
 }

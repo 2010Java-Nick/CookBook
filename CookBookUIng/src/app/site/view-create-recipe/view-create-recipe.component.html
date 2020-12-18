@@ -3,7 +3,7 @@
 <form #createRecipeForm="ngForm" (ngSubmit)="formCreateRecipe()">
     <div class="form-group">
         <label for="name">Recipe Name </label>
-    <input [(ngModel)]="recipe.name" name="name" class="form-control" type="text" placeholder="Recipe Name" id="Recipe Name" />
+    <input [(ngModel)]="recipe.name" name="recipename" class="form-control" type="text" placeholder="Recipe Name" id="Recipe Name" />
     </div>
     <div class="form-group">
         <label for="servings">Servings </label>
@@ -48,7 +48,6 @@
     </div>
 
     <button id="createRecipe" type="submit" class="btn btn-success" >Submit</button>
-
 
 </form>
 </div>

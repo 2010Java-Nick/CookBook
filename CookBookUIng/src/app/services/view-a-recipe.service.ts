@@ -22,4 +22,10 @@ export class ViewARecipeService {
 
     return this.httpClient.get<Recipe>(this.RECIPE_URL);
   }
+
+  public createRecipe(recipe: Recipe): boolean {
+
+    this.httpClient.post<Recipe>(this.RECIPE_URL,recipe);
+    return true;
+  }
 }

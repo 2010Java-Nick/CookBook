@@ -1,8 +1,9 @@
 export interface Recipe {
-
+    
+    id : number;
     name : string;
     author : string;
-    featured : string;
+    featured : boolean;
     servings : number;
     prepTime : number;
     cookTime : number;

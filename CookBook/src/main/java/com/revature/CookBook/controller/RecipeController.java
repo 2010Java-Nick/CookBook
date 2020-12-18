@@ -27,7 +27,7 @@ public class RecipeController {
 		this.recipeService = recipeService;
 	}
 
-	@RequestMapping(path = "/createRecipe", method = RequestMethod.POST)
+	@RequestMapping(path = "/recipe", method = RequestMethod.POST)
 	public String createRecipe(@RequestBody RecipeDto recipe) {
 
 		recipeService.createRecipe(recipe.toPojo());
@@ -38,16 +38,21 @@ public class RecipeController {
 	}
 	
 	@RequestMapping(path = "recipe/{recipeId}", method = RequestMethod.GET )
-	public Recipe readRecipe(@PathVariable(name = "recipeId")int recipeId) {
+	public RecipeDto readRecipe(@PathVariable(name = "recipeId")int recipeId) {
 		Recipe recipe= recipeService.readRecipe(recipeId);
 		
-		return recipe;
+		//ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>( HttpStatus.CREATED);
+		
+		RecipeDto recipeDto= new RecipeDto(recipe);
+		return recipeDto;
 	}
 
-	@RequestMapping(path = "/updateRecipe", method = RequestMethod.PUT)
-	public void updateRecipe(RecipeDto recipe) {
+	@RequestMapping(path = "/recipe/{recipeId}", method = RequestMethod.PUT)
+	public void updateRecipe(@PathVariable(name = "recipeId")RecipeDto recipe) {
 		
 		recipeService.updateRecipe(recipe.toPojo());
+		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>( HttpStatus.OK);
+		
 	}
 
 }
