@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { User } from '../models/user.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,10 @@ export class AccountCreationService {
     return true;
 
     // [^a-zA-Z\-]
+  }
+
+  public getUser(username: string): Observable<HttpResponse<User>> | null {
+
+    return this.httpClient.get<User>(this.USER_URL + '/' + username, {observe: 'response'});
   }
 }
