@@ -42,7 +42,10 @@ describe('AccountCreationService', () => {
   });
 
   it('should return bob', () => {
-    const returnedUser = service.getUser('username')?.subscribe(user => user);
+    let returnedUser;
+    service.getUser('username')?.subscribe((resp) => {
+      returnedUser = resp.body;
+    });
     console.log(returnedUser);
     expect(returnedUser).toEqual(user);
   });
