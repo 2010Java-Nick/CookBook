@@ -49,9 +49,9 @@ public class UserServiceImplTest {
 	@Test
 	public void readUserTest() {
         try {
-            userService.readUser(user.getUserId());
+            userService.readUser(user.getUsername());
 
-            verify(mockDao).readUser(user.getUserId());
+            verify(mockDao).readUser(user.getUsername());
         } 
         catch (Exception e){
             fail("Exception thrown in readUser test: " + e);

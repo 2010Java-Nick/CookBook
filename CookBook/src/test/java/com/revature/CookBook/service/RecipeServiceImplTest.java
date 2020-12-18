@@ -14,7 +14,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.revature.CookBook.daos.RecipeDao;
-import com.revature.CookBook.daos.UserDao;
 import com.revature.CookBook.pojos.Authorization;
 import com.revature.CookBook.pojos.Recipe;
 import com.revature.CookBook.pojos.User;

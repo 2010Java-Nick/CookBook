@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.revature.CookBook.pojos.Recipe;
-import com.revature.CookBook.pojos.User;
 
 @Repository(value = "recipeDao")
 public class RecipeDaoHibernate implements RecipeDao{
