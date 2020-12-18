@@ -11,7 +11,7 @@ export class ViewARecipeService {
   
   // NEED TO GET THE ID SOMEWHERE
 
-  public recipeId : number = 1 ; 
+  public recipeId : string= '/1' ; 
 
   private readonly RECIPE_URL = 'http://localhost:9091/recipe';
 
@@ -20,7 +20,7 @@ export class ViewARecipeService {
 
   public getRecipe(): Observable<Recipe>{
 
-    return this.httpClient.get<Recipe>(this.RECIPE_URL);
+    return this.httpClient.get<Recipe>(this.RECIPE_URL+this.recipeId);
   }
 
   public createRecipe(recipe: Recipe): boolean {
