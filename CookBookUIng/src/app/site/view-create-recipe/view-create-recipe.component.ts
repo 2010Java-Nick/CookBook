@@ -33,14 +33,10 @@ export class ViewCreateRecipeComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  public formCreateRecipe(): void {
-    //console.log(this.recipe.name);
-    this.recipeService.createRecipe(this.recipe);
-  }
-  onSubmit(customerData: any) {
-    // Process checkout data here
-    this.createRecipeForm.reset();
-
+  onSubmit(customerData: Recipe) {
+    // Process data here
+    //this.createRecipeForm.reset();
+    console.warn(this.recipeService.createRecipe(customerData));
     console.warn('Your recipe has been submitted', customerData);
   }
 }

@@ -30,6 +30,12 @@ public class RecipeDaoHibernate implements RecipeDao{
 	public Recipe readRecipe(int recipeId) throws HibernateException {
 		Recipe recipe = null;
 		Session session = sessionFactory.openSession();
+//		CriteriaBuilder cBuilder = session.getCriteriaBuilder();
+//		CriteriaQuery<Recipe> cQuery = cBuilder.createQuery(Recipe.class);
+//		Root<Recipe> root = cQuery.from(Recipe.class);
+//		cQuery.select(root).where(cBuilder.equal(root.get("id"), recipeId));
+//		TypedQuery<Recipe> typedQuery = session.createQuery(cQuery);
+//		recipe = typedQuery.getResultList().get(0);
 		recipe = session.get(Recipe.class, recipeId);
 		session.close();
 		return recipe;
