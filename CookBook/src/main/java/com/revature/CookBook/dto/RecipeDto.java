@@ -70,9 +70,8 @@ public class RecipeDto implements Dto<Recipe>{
 		recipe.setIngredients(this.getIngredients());
 		recipe.setDescription(this.getDescription());
 		
-		User user= new User();
-		user.setUsername(this.author);
-		recipe.setUser(user);
+
+		//recipe.setUser(user);
 	
 		return recipe;
 	}

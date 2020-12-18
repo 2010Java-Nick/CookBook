@@ -15,45 +15,55 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.CookBook.dto.Dto;
 import com.revature.CookBook.dto.RecipeDto;
 import com.revature.CookBook.pojos.Recipe;
+import com.revature.CookBook.pojos.User;
 import com.revature.CookBook.service.RecipeService;
+import com.revature.CookBook.service.UserService;
+
 //@RequestMapping("")
 @RestController
 public class RecipeController {
-	
+
 	RecipeService recipeService;
-	
+	UserService userService;
+
+	@Autowired
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
 	@Autowired
 	public void setRecipeService(RecipeService recipeService) {
 		this.recipeService = recipeService;
 	}
 
-	//@RequestMapping(path = "recipe", method = RequestMethod.POST)
+	// @RequestMapping(path = "recipe", method = RequestMethod.POST)
 	@PostMapping("recipe")
-	public void createRecipe(@RequestBody RecipeDto recipe) {
-		System.out.println( recipe.toString() );
-		boolean result=recipeService.createRecipe(recipe.toPojo());
-		
+	public void createRecipe(@RequestBody RecipeDto recipeDto) {
+		System.out.println(recipeDto.toString());
+		Recipe recipe = recipeDto.toPojo();
+		User user = userService.readUser(recipeDto.getAuthor());
+		recipe.setUser(user);
+		boolean result = recipeService.createRecipe(recipe);
 		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>(HttpStatus.CREATED);
-		
-		
+
 	}
-	
-	@RequestMapping(path = "recipe/{recipeId}", method = RequestMethod.GET )
-	public RecipeDto readRecipe(@PathVariable(name = "recipeId")int recipeId) {
-		Recipe recipe= recipeService.readRecipe(recipeId);
-		
-		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>( HttpStatus.OK);
-		
-		RecipeDto recipeDto= new RecipeDto(recipe);
+
+	@RequestMapping(path = "recipe/{recipeId}", method = RequestMethod.GET)
+	public RecipeDto readRecipe(@PathVariable(name = "recipeId") int recipeId) {
+		Recipe recipe = recipeService.readRecipe(recipeId);
+
+		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>(HttpStatus.OK);
+
+		RecipeDto recipeDto = new RecipeDto(recipe);
 		return recipeDto;
 	}
 
 	@RequestMapping(path = "/recipe/{recipeId}", method = RequestMethod.PUT)
-	public void updateRecipe(@PathVariable(name = "recipeId")RecipeDto recipe) {
-		
+	public void updateRecipe(@PathVariable(name = "recipeId") RecipeDto recipe) {
+
 		recipeService.updateRecipe(recipe.toPojo());
-		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>( HttpStatus.OK);
-		
+		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>(HttpStatus.OK);
+
 	}
 
 }
