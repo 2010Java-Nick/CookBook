@@ -7,6 +7,11 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import com.revature.CookBook.pojos.User;
 
 @Repository(value = "userDao")
@@ -20,11 +25,16 @@ public class UserDaoHibernate implements UserDao {
 	}
 	
 	@Override
-	public User readUser(int id) throws HibernateException {
+	public User readUser(String username) throws HibernateException {
 		
 		User user = null;
 		Session session = sessionFactory.openSession();
-		user = session.get(User.class, id);
+		CriteriaBuilder cBuilder = session.getCriteriaBuilder();
+		CriteriaQuery<User> cQuery = cBuilder.createQuery(User.class);
+		Root<User> root = cQuery.from(User.class);
+		cQuery.select(root).where(cBuilder.equal(root.get("username"), username));
+		TypedQuery<User> typedQuery = session.createQuery(cQuery);
+		user = typedQuery.getResultList().get(0);
 		session.close();
 		return user;
 	}

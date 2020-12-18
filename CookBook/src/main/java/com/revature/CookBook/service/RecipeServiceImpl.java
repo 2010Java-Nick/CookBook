@@ -1,6 +1,5 @@
 package com.revature.CookBook.service;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.HibernateException;

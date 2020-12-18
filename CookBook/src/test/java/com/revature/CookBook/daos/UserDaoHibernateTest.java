@@ -67,7 +67,7 @@ public class UserDaoHibernateTest {
 			}
 			
 			try{
-				User returnedUser = userDao.readUser(this.user.getUserId());
+				User returnedUser = userDao.readUser(this.user.getUsername());
 				assertEquals("Returned user doesn't match given user.", this.user, returnedUser);
 			}
 			catch (Exception e) {

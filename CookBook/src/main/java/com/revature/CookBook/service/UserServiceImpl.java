@@ -18,12 +18,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User readUser(int userId) {
+    public User readUser(String username) {
 
         User user = null;
 
         try {
-            user = userDao.readUser(userId);
+            user = userDao.readUser(username);
 
         } catch (HibernateException e){ }
 
