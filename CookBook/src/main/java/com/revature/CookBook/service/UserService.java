@@ -5,7 +5,7 @@ import com.revature.CookBook.pojos.User;
 
 public interface UserService {
     
-    public User readUser(int userId);
+    public User readUser(String username);
 
     public boolean createUser(User user);
 

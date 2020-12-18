@@ -20,11 +20,11 @@ public class UserDaoHibernate implements UserDao {
 	}
 	
 	@Override
-	public User readUser(int id) throws HibernateException {
+	public User readUser(String username) throws HibernateException {
 		
 		User user = null;
 		Session session = sessionFactory.openSession();
-		user = session.get(User.class, id);
+		user = session.get(User.class, username);
 		session.close();
 		return user;
 	}

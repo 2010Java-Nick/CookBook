@@ -6,7 +6,7 @@ import org.hibernate.HibernateException;
 
 public interface UserDao {
 
-	public User readUser(int id) throws HibernateException;
+	public User readUser(String username) throws HibernateException;
 	
 	public void createUser(User user) throws HibernateException;
 	
