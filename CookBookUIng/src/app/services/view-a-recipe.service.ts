@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient,HttpParams} from  '@angular/common/http';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { Observable,throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable,of,throwError } from 'rxjs';
+import { catchError, map, retry, tap } from 'rxjs/operators';
 
 import {Recipe} from '../models/recipe.model'
 
@@ -73,4 +73,37 @@ export class ViewARecipeService {
         catchError(this.handleError)
       );
   }
+
+ public search(searchValue: string): Observable<Recipe[]> {
+    // clear if no pkg name
+    if (!searchValue.trim()) { return of([]); }
+
+
+    // TODO: Add error handling
+    return this.httpClient.get(this.RECIPE_URL, httpOptions).pipe(
+      map((data: any) => {
+        return data.results.map((entry: any) => ({
+            name: entry.name[0],
+            tags: entry.tags[0],
+            description: entry.description[0],
+            ingredients: entry.ingredients[0]
+          } as Recipe)
+        );
+      })
+    );
+  }
+
+// searchRecipe(searchValue: string): Observable<Recipe[]> {
+//   if (!searchValue.trim()) {
+//     // if not search term, return empty hero array.
+//     return of([]);
+//   }
+//   return this.httpClient.get<Recipe[]>(`${this.RECIPE_URL}/?name=${searchValue}`).pipe(
+//     tap(x => x.length ?
+//        console.log(`found matching recipes"${searchValue}"`) :
+//        console.log(`no matching recipes "${searchValue}"`)),
+//     // catchError(this.handleError<Recipes[]>('searchRecipe', []))
+//   );
+// }
+
 }

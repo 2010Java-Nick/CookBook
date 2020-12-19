@@ -16,6 +16,7 @@ export class ViewSearchPageComponent implements OnInit {
   
 
   ngOnInit(): void {
+    
   }
 
 

@@ -19,7 +19,7 @@ const routes: Routes = [
       { path : 'recipe/:id', component : ViewARecipeComponent},
       { path : 'createRecipe', component : ViewCreateRecipeComponent},
       { path : 'recipe', component : ViewRecipeListComponent},
-      {  path : 'search', component : ViewSearchPageComponent}
+      { path : 'search', component : ViewSearchPageComponent}
     ],
   },
 ];
