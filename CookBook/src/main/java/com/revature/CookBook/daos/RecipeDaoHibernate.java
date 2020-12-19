@@ -70,28 +70,9 @@ public class RecipeDaoHibernate implements RecipeDao{
     Session sess=sessionFactory.openSession();
 		
 		Transaction tx= sess.beginTransaction();
-		//Recipe recipe1 = sess.get(Recipe.class,recipeId);
-		//get guest
-		// change with setter 
-		// sess.update()
-		//merge? update
-//		recipe1.setRecipeId(recipe.getRecipeId());
-//		recipe1.setName(recipe.getName());
-//		//recipe1.setAuthor(recipe.getAuthor());
-//		//getFeatured?
-//		recipe1.setFeatured(recipe.isFeatured());
-//		recipe1.setServings(recipe.getServings());
-//		recipe1.setPrepTime(recipe.getPrepTime());
-//		recipe1.setCookTime(recipe.getCookTime());
-//		recipe1.setSteps(recipe.getSteps());
-//		recipe1.setTags(recipe.getTags());
-//		recipe1.setIngredients(recipe.getIngredients());
-//		recipe1.setDescription(recipe.getDescription());
 		sess.update(recipe);
 		tx.commit();
 		sess.close();
-		
-		//return recipe1;
 		
 	}
 

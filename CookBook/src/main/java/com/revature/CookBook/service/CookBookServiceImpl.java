@@ -1,0 +1,88 @@
+package com.revature.CookBook.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.revature.CookBook.daos.CookBookDao;
+import com.revature.CookBook.daos.RecipeDao;
+import com.revature.CookBook.daos.UserDao;
+import com.revature.CookBook.pojos.CookBook;
+import com.revature.CookBook.pojos.Recipe;
+
+@Service
+public class CookBookServiceImpl implements CookBookService {
+	
+	CookBookDao cookBookDao;
+	
+	private UserDao userDao;
+
+	  @Autowired
+	    public void setUserDao(UserDao userDao) {
+	        this.userDao = userDao;
+	    }
+	  
+		@Autowired
+	    public void setCookBookDao(CookBookDao cookBookDao) {
+	        this.cookBookDao = cookBookDao;
+	    }
+	  
+	
+	@Override
+	public CookBook readCookBook(int cookBookId) {
+		CookBook cookBook= null;
+		try {
+			cookBook = cookBookDao.readCookBook(cookBookId);
+		}
+		catch ( HibernateException e) {}
+		 
+		 return cookBook;
+	}
+
+	@Override
+	public boolean createCookBook(CookBook cookBook) {
+		try {
+			cookBookDao.createCookBook(cookBook);
+			return true;
+		}
+		catch ( HibernateException e) {}
+		return false;
+	}
+
+	@Override
+	public List<CookBook> getAllCookBooks() {
+		
+		List<CookBook> cookBookList= new ArrayList();
+		try {
+			cookBookList = cookBookDao.readAllCookBooks();
+		}
+		catch ( HibernateException e) {}
+		 
+		 return cookBookList;
+	}
+
+	@Override
+	public boolean updateCookBook(CookBook cookBook) {
+		try {
+			 cookBookDao.updateCookBook(cookBook);
+			 return true;
+			}
+			catch ( HibernateException e) {}
+			return false;
+	}
+
+	@Override
+	public boolean deleteCookBook(int cookBookId) {
+		try {
+			userDao.deleteUser(cookBookId);
+			return true;
+		}
+		catch ( HibernateException e) {}
+		return false;
+	}
+
+
+}

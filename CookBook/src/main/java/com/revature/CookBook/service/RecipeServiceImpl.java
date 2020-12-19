@@ -54,7 +54,6 @@ public class RecipeServiceImpl implements RecipeService {
 	@Override
 	public List<Recipe> getAllRecipes() {
 		
-	
 		List<Recipe> recipeList= new ArrayList();
 		try {
 			recipeList = recipeDao.readAllRecipes();
