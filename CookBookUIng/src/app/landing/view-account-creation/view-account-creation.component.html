@@ -1,26 +1,32 @@
 <div class="col-md-8" style="margin: auto;">
-    <h2>Account Creation</h2>
-<form #accountCreationForm="ngForm" (ngSubmit)="formCreateUser()">
-  <div class="form-group">
+  <h2>Account Creation</h2>
+  <span style="color: red;">{{error}}</span>
+  <form #accountCreationForm="ngForm" (ngSubmit)="formCreateUser()">
+    <div class="form-group">
       <label for="firstName">First Name:</label>
-    <input [(ngModel)]="user.firstName" name="firstName" class="form-control" type="text" placeholder="First Name" id="firstName" />
-  </div>
-  <div class="form-group">
+      <input [(ngModel)]="user.firstName" name="firstName" class="form-control" type="text" placeholder="First Name"
+        id="firstName" />
+    </div>
+    <div class="form-group">
       <label for="lastName">Last Name:</label>
-    <input [(ngModel)]="user.lastName" name="lastName" class="form-control" type="text" placeholder="Last Name" id="lastName" />
-  </div>
-  <div class="form-group">
+      <input [(ngModel)]="user.lastName" name="lastName" class="form-control" type="text" placeholder="Last Name"
+        id="lastName" />
+    </div>
+    <div class="form-group">
       <label for="username">Username:</label>
-    <input [(ngModel)]="user.username" name="username" class="form-control" type="text" placeholder="Username" id="username" />
-  </div>
-  <div class="form-group">
+      <input [(ngModel)]="user.username" name="username" class="form-control" type="text" placeholder="Username"
+        id="username" />
+    </div>
+    <div class="form-group">
       <label for="password">Password:</label>
-    <input [(ngModel)]="user.password" name="password" class="form-control" type="password" placeholder="Password" id="password" />
-  </div>
-  <div class="form-group">
+      <input [(ngModel)]="user.password" name="password" class="form-control" type="password" placeholder="Password"
+        id="password" />
+    </div>
+    <div class="form-group">
       <label for="reenterPassword">Re-enter Password:</label>
-    <input [(ngModel)]="reenterPassword" name="reenterPassword" class="form-control" type="password" placeholder="Re-enter Password" id="reenterPassword" />
-  </div>
-  <button id="btn-create-account" type="submit" class="btn btn-primary" >Submit</button>
-</form>
+      <input [(ngModel)]="reenterPassword" name="reenterPassword" class="form-control" type="password"
+        placeholder="Re-enter Password" id="reenterPassword" />
+    </div>
+    <button id="btn-create-account" type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
