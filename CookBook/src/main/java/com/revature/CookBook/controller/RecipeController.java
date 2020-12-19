@@ -1,9 +1,13 @@
 package com.revature.CookBook.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,6 +41,7 @@ public class RecipeController {
 	}
 
 	// @RequestMapping(path = "recipe", method = RequestMethod.POST)
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("recipe")
 	public void createRecipe(@RequestBody RecipeDto recipeDto) {
 		System.out.println(recipeDto.toString());
@@ -57,7 +62,15 @@ public class RecipeController {
 		RecipeDto recipeDto = new RecipeDto(recipe);
 		return recipeDto;
 	}
-
+	@RequestMapping(path = "recipe", method = RequestMethod.GET)
+	public List<RecipeDto> readRecipes() {
+		List <RecipeDto> recipeDtoList=new ArrayList<>();
+		List <Recipe> recipeList=recipeService.getAllRecipes();
+		for ( Recipe recipe: recipeList ) {
+			recipeDtoList.add( new RecipeDto(recipe));
+		}
+		return recipeDtoList;
+	}
 	@RequestMapping(path = "/recipe/{recipeId}", method = RequestMethod.PUT)
 	public void updateRecipe(@PathVariable(name = "recipeId") RecipeDto recipe) {
 

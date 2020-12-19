@@ -1,16 +1,22 @@
+<!-- <div ngIf* >{{recipe.recipeImage}}</div> -->
 
-<h2>{{recipe.name}}</h2>
-
-<div>{{recipe.recipeImage}}</div>
-
-<h4>{{recipe.description}}</h4>
-   
- <h4>{{recipe.tags}}</h4>
-
-<h4>{{recipe.prepTime}}</h4>
-
-<h4>{{recipe.cookTime}}</h4>
-
-<h4>{{recipe.ingredients}}</h4>
-
-<h4>{{recipe.steps}}</h4>
+<div class="container-lg ">
+<div class="jumbotron">
+    <h1 class="display-4">{{recipe.name}}</h1>
+    <p class="lead">{{recipe.description}}</p>
+    <hr class="my-4">
+    <h4>Servings</h4>
+    <p>{{recipe.servings}}</p>
+    <h4>Tags</h4>
+    <p>{{recipe.tags}} </p>
+    <h4>Preparation Time </h4>
+    <p>{{recipe.prepTime}} minutes </p>
+    <h4>Cook Time</h4>
+    <p>{{recipe.cookTime}} minutes</p>
+    <h4>Ingredients List</h4>
+    <pre>{{recipe.ingredients}}</pre>
+    <h4>Steps</h4>
+    <pre>{{recipe.steps}}</pre>
+    <a class="btn btn-danger btn-lg" href="#" role="button">Add to Favorites</a>
+</div>
+</div>

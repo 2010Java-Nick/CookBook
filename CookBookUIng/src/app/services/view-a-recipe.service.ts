@@ -14,7 +14,6 @@ const httpOptions = {
     //Authorization: 'my-auth-token'
   })
 };
-
 export interface Config {
   rl: string;
   textfile: string;
@@ -24,24 +23,10 @@ export interface Config {
   providedIn: 'root'
 })
 export class ViewARecipeService {
-
-  
-  // NEED TO GET THE ID SOMEWHERE
-
-  public recipeId : string= '/1' ; 
-
   private readonly RECIPE_URL = `http://localhost:9091/recipe`;
-
 
   constructor(private httpClient: HttpClient) { }
 
-  getConfig() {
-    return this.httpClient.get<Config>(this.RECIPE_URL)
-      .pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError) // then handle the error
-      );
-  }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -59,24 +44,33 @@ export class ViewARecipeService {
   }
 
 // need to add the id as parameter recipeId:number
-  public getRecipe(): Observable<Recipe>{
-
+  public getRecipe(recipeId:number): Observable<Recipe>{
     return this.httpClient.get<Recipe>(
-      this.RECIPE_URL+this.recipeId)
+      this.RECIPE_URL+'/'+recipeId)
       .pipe(
-        retry(2), // retry a failed request up to 3 times
+        retry(2),
         catchError(this.handleError) // then handle the error
       );
   }
 
   public createRecipe(recipe: Recipe): any {
-    this.httpClient.post<Recipe>(this.RECIPE_URL,recipe);
-    // this.httpClient.post<Recipe>(
-    //   this.RECIPE_URL,recipe,httpOptions)
-    //   .pipe(
-    //     retry(2), // retry a failed request up to 3 times
-    //     catchError(this.handleError) // then handle the error
-    //   );
+    this.httpClient.post<any>(
+      this.RECIPE_URL,recipe,httpOptions)
+      .pipe(
+        retry(2), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      ).subscribe(
+        (res) => console.log(res),
+        (err) => console.log(err)  );
     return  recipe ;
+  }
+
+  public getRecipes(): Observable<Recipe[]>{
+    return this.httpClient.get<Recipe[]>(
+      this.RECIPE_URL)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
   }
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import {Recipe} from '../../models/recipe.model';
 import { ViewARecipeService} from '../../services/view-a-recipe.service'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-item',
@@ -10,15 +11,29 @@ import { ViewARecipeService} from '../../services/view-a-recipe.service'
 export class RecipeItemComponent implements OnInit {
 
   recipe!: Recipe ;
+  private sub: any;
+  id!: number;
 
-  constructor(private viewARecipeService : ViewARecipeService
-    ) { }
+  
+
+  constructor(
+    private viewARecipeService : ViewARecipeService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.viewARecipeService.getRecipe().subscribe(
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id'];  });
 
-      (result) => { this.recipe = result }
-    )}
+    this.viewARecipeService.getRecipe(this.id).subscribe(
+      (result) => { this.recipe = result  
+    });
+  }
+  
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 
   
 

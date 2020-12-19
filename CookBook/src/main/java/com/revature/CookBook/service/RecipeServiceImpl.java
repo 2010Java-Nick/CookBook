@@ -1,5 +1,6 @@
 package com.revature.CookBook.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -52,8 +53,15 @@ public class RecipeServiceImpl implements RecipeService {
 
 	@Override
 	public List<Recipe> getAllRecipes() {
-		// TODO Auto-generated method stub
-		return null;
+		
+	
+		List<Recipe> recipeList= new ArrayList();
+		try {
+			recipeList = recipeDao.readAllRecipes();
+		}
+		catch ( HibernateException e) {}
+		 
+		 return recipeList;
 	}
 
 	@Override
