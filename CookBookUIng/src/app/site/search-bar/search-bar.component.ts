@@ -24,7 +24,7 @@ export class SearchBarComponent implements OnInit {
 
   updateSearchBar() {
     console.log("ran update Search Bar")
-    this.searchValue.emit(this.searchInput);
+    this.searchValue.emit(this.searchInput.toLowerCase());
   }
 
 

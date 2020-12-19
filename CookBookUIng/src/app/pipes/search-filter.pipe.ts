@@ -11,7 +11,7 @@ export class RecipeFilterPipe implements PipeTransform {
    
     let filteredRecipeList = recipeList.filter(
       (recipe) => {
-        if (recipe.name.toString().startsWith(value) || 
+        if (recipe.name.toString().toLowerCase().startsWith(value) || 
         recipe.author.toString().startsWith(value) || 
         recipe.tags.toString().startsWith(value) || 
         recipe.ingredients.toString().startsWith(value) ||
@@ -23,7 +23,7 @@ export class RecipeFilterPipe implements PipeTransform {
       }
     );
  
-    return recipeList.filter((recipe) => (recipe.name.toString().startsWith(value) || 
+    return recipeList.filter((recipe) => (recipe.name.toString().toLowerCase().startsWith(value) || 
                                       recipe.author.toString().startsWith(value) || 
                                       recipe.tags.toString().startsWith(value) || 
                                       recipe.ingredients.toString().startsWith(value) ||
