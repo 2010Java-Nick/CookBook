@@ -3,18 +3,17 @@ package com.revature.CookBook.controller;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.CookBook.dto.UserDto;
 import com.revature.CookBook.service.UserService;
 
 @RestController
-@RequestMapping(path = "user")
 public class UserController {
 	
 	UserService userService;
@@ -24,19 +23,26 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@PostMapping(value = "")
-	public void createUser(@RequestBody UserDto user, HttpServletResponse response) {
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/user")
+	public boolean createUser(@RequestBody UserDto user, HttpServletResponse response) {
 	
+		System.out.println("Request received");
+		System.out.println(user);
+
 		if(userService.createUser(user.toPojo())) {
 			response.setStatus(201);
+			return true;
 		}
 		else {
 			response.setStatus(400);
+			return false;
 		}
 		
 	}
 	
-	@GetMapping(value = "{username}")
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/user/{username}")
 	public UserDto readUser(@PathVariable(name = "username") String username, HttpServletResponse response) {
 		
 		UserDto userDto = new UserDto(userService.readUser(username));
