@@ -27,7 +27,8 @@ export class ViewAccountCreationComponent implements OnInit {
       console.log(`Passwords don't match`);
     }
     else {
-      this.accountService.createNewUser(this.user);
+      this.user.authorization = 'STANDARD';
+      console.log(`View Component: ` + this.accountService.createNewUser(this.user));
     }
   }
 }

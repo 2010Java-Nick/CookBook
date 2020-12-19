@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { from, Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from '../models/user.model';
 
 import { AccountCreationService } from './account-creation.service';
@@ -11,14 +11,11 @@ class MockHttp {
     url.toString();
   }
 
-  public get(url: string, username: string): Observable<User> | null {
+  public get(url: string, username: string): Observable<HttpResponse<User>> {
     const user: User = {username: 'username', password: 'password', firstName: 'Bob', lastName: 'Billy', authorization: 'STANDARD'};
-    url.toString();
-    if (username === user.username){
-      return from([user]);
-    } else {
-      return null;
-    }
+    const response: HttpResponse<User> = new HttpResponse({body: user});
+    const observable: Observable<HttpResponse<User>> = of(response);
+    return observable;
   }
 }
 
@@ -43,10 +40,13 @@ describe('AccountCreationService', () => {
 
   it('should return bob', () => {
     let returnedUser;
-    service.getUser('username')?.subscribe((resp) => {
+    service.getUser('username').subscribe((resp) => {
       returnedUser = resp.body;
     });
     console.log(returnedUser);
-    expect(returnedUser).toEqual(user);
+    expect(returnedUser).toBeTruthy();
+    if (returnedUser !== undefined){
+      expect(user).toEqual(returnedUser);
+    }
   });
 });
