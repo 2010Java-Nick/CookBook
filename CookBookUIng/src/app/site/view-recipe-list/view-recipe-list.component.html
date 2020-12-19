@@ -1,12 +1,16 @@
 
-<table >
-    <thead>
-        <th>Recipe Name</th>
-        <th>Author</th>
-    </thead>
-    <tbody *ngFor="let recipe of recipeList">
-        <tr></tr>
-        <td>{{recipe.name}}</td>
-        <td>{{recipe.author}}</td>
-    </tbody>
-</table>
+<div class="container-lg ">
+
+<div class="card-deck" >
+    <div class="card" *ngFor="let recipe of recipeList">
+      <!-- <img src="..." class="card-img-top" alt="..."> -->
+      <div class="card-body">
+        <h5 class="card-title"><a [routerLink]="['/recipe', recipe.id]"> {{recipe.name}}</a></h5>
+        <p class="card-text">{{recipe.description}}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{recipe.tags}}</small>
+      </div>
+    </div>
+    </div>
+</div>
