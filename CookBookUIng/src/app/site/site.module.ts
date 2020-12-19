@@ -12,6 +12,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewCreateRecipeComponent } from './view-create-recipe/view-create-recipe.component';
 import { ViewRecipeListComponent } from './view-recipe-list/view-recipe-list.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ViewRecipeListComponent } from './view-recipe-list/view-recipe-list.com
     RecipeItemComponent,
     ViewARecipeComponent,
     ViewCreateRecipeComponent,
-    ViewRecipeListComponent
+    ViewRecipeListComponent,
+    SearchBarComponent
   ],
   imports: [
     CommonModule,

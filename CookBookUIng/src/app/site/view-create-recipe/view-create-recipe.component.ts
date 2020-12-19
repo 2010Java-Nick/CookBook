@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import {Recipe} from '../../models/recipe.model';
 import { ViewARecipeService} from '../../services/view-a-recipe.service'
 import { FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
 
 @Component({
   selector: 'app-view-create-recipe',
@@ -18,6 +20,9 @@ export class ViewCreateRecipeComponent implements OnInit {
   constructor(
     private recipeService : ViewARecipeService,
     private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
+
   ) { 
     this.createRecipeForm =this.formBuilder.group({
       name:'',
@@ -53,5 +58,8 @@ export class ViewCreateRecipeComponent implements OnInit {
 
     console.warn(this.recipeService.createRecipe(recipe));
     console.warn('Your recipe has been submitted', recipe);
+
+    this.router.navigate(['/recipe']);
+
   }
 }

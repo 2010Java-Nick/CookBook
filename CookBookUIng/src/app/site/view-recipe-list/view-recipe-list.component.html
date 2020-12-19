@@ -1,16 +1,20 @@
 
-<div class="container-lg ">
+<app-search-bar (searchValue)="searchValueInput($event)"></app-search-bar>
 
-<div class="card-deck" >
-    <div class="card" *ngFor="let recipe of recipeList">
-      <!-- <img src="..." class="card-img-top" alt="..."> -->
-      <div class="card-body">
-        <h5 class="card-title"><a [routerLink]="['/recipe', recipe.id]"> {{recipe.name}}</a></h5>
-        <p class="card-text">{{recipe.description}}</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">{{recipe.tags}}</small>
-      </div>
-    </div>
+
+<div class="container " >
+    
+    <div class="row row-cols-1 row-cols-md-2"  >
+        <div class="col mb-4" *ngFor="let recipe of recipeList">
+            <div class="card h-100"  >
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title"><a [routerLink]="['/recipe', recipe.id]"> {{recipe.name}}</a></h5>
+                    <p class="card-text">{{recipe.description}}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">{{recipe.tags}}</small>
+                </div>
+            </div>
     </div>
 </div>

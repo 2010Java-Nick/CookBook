@@ -11,6 +11,7 @@ import { ViewARecipeService} from '../../services/view-a-recipe.service'
 export class ViewRecipeListComponent implements OnInit {
 
   recipeList: Recipe []=new Array();
+  searchValue = ``;
   constructor(private recipeService : ViewARecipeService) { }
 
   ngOnInit(): void {
