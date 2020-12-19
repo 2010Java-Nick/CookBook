@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewCreateRecipeComponent } from './view-create-recipe/view-create-recipe.component';
 import { ViewRecipeListComponent } from './view-recipe-list/view-recipe-list.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { ViewSearchPageComponent } from './view-search-page/view-search-page.component';
+import { RecipeFilterPipe } from '../pipes/search-filter.pipe';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     ViewARecipeComponent,
     ViewCreateRecipeComponent,
     ViewRecipeListComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ViewSearchPageComponent,
+    RecipeFilterPipe
   ],
   imports: [
     CommonModule,
