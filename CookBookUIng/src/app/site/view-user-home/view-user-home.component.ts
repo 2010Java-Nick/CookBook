@@ -21,8 +21,8 @@ export class ViewUserHomeComponent implements OnInit {
     this.router.navigate(['/createCookBook']);
   }
 
-  navFavorited(): void {
-    this.router.navigate(['/favorited']);
+  navFavorites(): void {
+    this.router.navigate(['/favorites']);
   }
 
   navCookBooks(): void {

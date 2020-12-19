@@ -21,6 +21,10 @@ CREATE TABLE recipe (
   "recipe_image" bytea
 );
 
+create table pending_recipe (
+	"id" int4 primary key
+);
+
 CREATE TABLE user_profile (
   "id" serial primary key,
   "username" varchar(30) not null,
@@ -72,6 +76,10 @@ CREATE TABLE weekly_cookbook (
 ALTER TABLE recipe ADD CONSTRAINT FK_user
 FOREIGN KEY (author) REFERENCES user_profile (id) 
 ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE pending_recipe ADD CONSTRAINT FK_recipe
+FOREIGN KEY (id) REFERENCES recipe (id) 
+ON DELETE no action ON UPDATE CASCADE;
 
 ALTER TABLE cookbook_to_recipe ADD CONSTRAINT FK_many_to_cookbook
 FOREIGN KEY (cookbook_id) REFERENCES cookbook (id) 

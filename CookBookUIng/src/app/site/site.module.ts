@@ -11,6 +11,7 @@ import { ViewARecipeComponent} from './view-a-recipe/view-a-recipe.component'
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewCreateRecipeComponent } from './view-create-recipe/view-create-recipe.component';
+import { PendingRequestsComponent } from './view-moderator-home/pending-requests/pending-requests.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ViewCreateRecipeComponent } from './view-create-recipe/view-create-reci
     ViewUserHomeComponent,
     RecipeItemComponent,
     ViewARecipeComponent,
-    ViewCreateRecipeComponent
+    ViewCreateRecipeComponent,
+    PendingRequestsComponent
   ],
   imports: [
     CommonModule,
