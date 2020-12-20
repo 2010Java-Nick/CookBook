@@ -18,6 +18,7 @@ import { RecipeFilterPipe } from '../pipes/search-filter.pipe';
 import { RecipeListItemComponent } from './recipe-list-item/recipe-list-item.component';
 import { PendingRequestsComponent } from './view-moderator-home/pending-requests/pending-requests.component';
 import { ViewCookbookListComponent } from './view-cookbook-list/view-cookbook-list.component';
+import { ViewACookbookComponent } from './view-a-cookbook/view-a-cookbook.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ViewCookbookListComponent } from './view-cookbook-list/view-cookbook-li
     RecipeFilterPipe,
     RecipeListItemComponent,
     PendingRequestsComponent,
-    ViewCookbookListComponent
+    ViewCookbookListComponent,
+    ViewACookbookComponent
   ],
   imports: [
     CommonModule,
