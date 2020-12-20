@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+
+        <RollingFile name="RootRolling" fileName="logs/App.log" filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%highlight{%d [%t] %-5level: %c - %msg%n%throwable}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="50 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+
+        <RollingFile name="UserRolling" fileName="logs/User.log" filePattern="logs/$${date:yyyy-MM}/user-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%highlight{%d [%t] %-5level: %msg%n%throwable}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="50 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+
+        <RollingFile name="RecipeRolling" fileName="logs/Recipe.log" filePattern="logs/$${date:yyyy-MM}/recipe-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%highlight{%d [%t] %-5level: %msg%n%throwable}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="50 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+
+        <RollingFile name="CookbookRolling" fileName="logs/Cookbook.log" filePattern="logs/$${date:yyyy-MM}/cookbook-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%highlight{%d [%t] %-5level: %msg%n%throwable}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="50 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+
+        <RollingFile name="FeaturedRolling" fileName="logs/Featured.log" filePattern="logs/$${date:yyyy-MM}/featured-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%highlight{%d [%t] %-5level: %msg%n%throwable}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="50 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+
+    </Appenders>
+    <Loggers>
+
+        <Root level="WARN">
+            <AppenderRef ref="RootRolling" />
+        </Root>
+
+        <Logger name="User" level="INFO">
+            <AppenderRef ref="UserRolling" />
+        </Logger>
+
+        <Logger name="Recipe" level="INFO">
+            <AppenderRef ref="RecipeRolling" />
+        </Logger>
+
+        <Logger name="Cookbook" level="INFO">
+            <AppenderRef ref="CookbookRolling" />
+        </Logger>
+
+        <Logger name="Featured" level="INFO">
+            <AppenderRef ref="FeaturedRolling" />
+        </Logger>
+
+    </Loggers>
+</Configuration>
