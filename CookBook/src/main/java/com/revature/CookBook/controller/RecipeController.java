@@ -39,7 +39,6 @@ public class RecipeController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("recipe")
 	public void createRecipe(@RequestBody RecipeDto recipeDto) {
-		System.out.println(recipeDto.toString());
 		Recipe recipe = recipeDto.toPojo();
 		User user = userService.readUser(recipeDto.getAuthor());
 		recipe.setUser(user);
