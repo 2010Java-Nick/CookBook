@@ -86,34 +86,34 @@ public class CookBookDaoHibernate implements CookBookDao{
 		
 	}
 
-	@Override
-	public WeeklyCookBook readWeeklyCookBook(int weeklyCookBookId) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void createWeeklyweeklyCookBook(WeeklyCookBook weeklyCookBook) throws HibernateException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<WeeklyCookBook> readAllWeeklyCookBooks() throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void updateWeeklyCookBook(WeeklyCookBook weeklyCookBook) throws HibernateException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteWeeklyCookBook(int weeklyCookBookId) throws HibernateException {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public WeeklyCookBook readWeeklyCookBook(int weeklyCookBookId) throws HibernateException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public void createWeeklyweeklyCookBook(WeeklyCookBook weeklyCookBook) throws HibernateException {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	@Override
+//	public List<WeeklyCookBook> readAllWeeklyCookBooks() throws HibernateException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public void updateWeeklyCookBook(WeeklyCookBook weeklyCookBook) throws HibernateException {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	@Override
+//	public void deleteWeeklyCookBook(int weeklyCookBookId) throws HibernateException {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 }

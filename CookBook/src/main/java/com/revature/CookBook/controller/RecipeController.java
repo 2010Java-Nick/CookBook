@@ -23,7 +23,6 @@ import com.revature.CookBook.pojos.User;
 import com.revature.CookBook.service.RecipeService;
 import com.revature.CookBook.service.UserService;
 
-//@RequestMapping("")
 @RestController
 public class RecipeController {
 
@@ -78,5 +77,9 @@ public class RecipeController {
 		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>(HttpStatus.OK);
 
 	}
+	
+	
+	
+	
 
 }

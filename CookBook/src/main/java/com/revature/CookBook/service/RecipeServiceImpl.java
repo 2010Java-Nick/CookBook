@@ -16,13 +16,6 @@ public class RecipeServiceImpl implements RecipeService {
 	
 	RecipeDao recipeDao;
 	
-	 private UserDao userDao;
-
-	    @Autowired
-	    public void setUserDao(UserDao userDao) {
-	        this.userDao = userDao;
-	    }
-	
 	@Autowired
     public void setRecipeDao(RecipeDao recipeDao) {
         this.recipeDao = recipeDao;
@@ -76,7 +69,7 @@ public class RecipeServiceImpl implements RecipeService {
 	@Override
 	public boolean deleteRecipe(int recipeId) {
 		try {
-			userDao.deleteUser(recipeId);
+			recipeDao.deleteRecipe(recipeId);
 			return true;
 		}
 		catch ( HibernateException e) {}

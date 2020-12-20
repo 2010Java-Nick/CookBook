@@ -17,13 +17,7 @@ import com.revature.CookBook.pojos.Recipe;
 public class CookBookServiceImpl implements CookBookService {
 	
 	CookBookDao cookBookDao;
-	
-	private UserDao userDao;
 
-	  @Autowired
-	    public void setUserDao(UserDao userDao) {
-	        this.userDao = userDao;
-	    }
 	  
 		@Autowired
 	    public void setCookBookDao(CookBookDao cookBookDao) {
@@ -77,7 +71,7 @@ public class CookBookServiceImpl implements CookBookService {
 	@Override
 	public boolean deleteCookBook(int cookBookId) {
 		try {
-			userDao.deleteUser(cookBookId);
+			cookBookDao.deleteCookBook(cookBookId);
 			return true;
 		}
 		catch ( HibernateException e) {}

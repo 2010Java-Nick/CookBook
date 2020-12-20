@@ -1,5 +1,8 @@
 package com.revature.CookBook.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.revature.CookBook.pojos.CookBook;
 import com.revature.CookBook.pojos.Recipe;
 
@@ -20,14 +23,26 @@ public class CookBookDto implements Dto<CookBook>{
 	
 	private byte[] coverImage;
 	
+	//private RecipeDto[] recipes;
 	
-	
+	private List<RecipeDto> recipeDtos;
+		
+
 	public CookBookDto(CookBook cookBook) {
 		super();
-		this.name= cookBook.getName();
-		this.author= cookBook.getUser().getUsername();
+		this.name = cookBook.getName();
+		this.author = cookBook.getUser().getUsername();
 		this.featured = cookBook.isFeatured();
-		this.coverImage=cookBook.getCoverImage();
+		this.coverImage = cookBook.getCoverImage();
+		List<Recipe> newRecipes = new ArrayList<>();
+		newRecipes = cookBook.getRecipes(); 
+		List <RecipeDto> recipeDtoList=new ArrayList<>();
+		List <Recipe> recipeList=newRecipes;
+		for ( Recipe recipe: recipeList ) {
+			recipeDtoList.add( new RecipeDto(recipe));
+		}
+	
+		this.recipeDtos =recipeDtoList;
 		
 	}
 	
@@ -36,8 +51,12 @@ public class CookBookDto implements Dto<CookBook>{
 
 	@Override
 	public CookBook toPojo() {
-		// TODO Auto-generated method stub
-		return null;
+		CookBook cookBook = new CookBook();
+		cookBook.setName(this.getName());
+		cookBook.setFeatured(this.isFeatured());
+		cookBook.setCoverImage(this.getCoverImage());
+		
+		return cookBook;
 	}
 	
 	
