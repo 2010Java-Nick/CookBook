@@ -3,11 +3,13 @@ package com.revature.CookBook.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.CookBook.daos.FeaturedDao;
 import com.revature.CookBook.pojos.Featured;
 import com.revature.CookBook.pojos.Recipe;
 
+@Service
 public class FeaturedServiceImpl implements FeaturedService {
 
 	private FeaturedDao featuredDao;
