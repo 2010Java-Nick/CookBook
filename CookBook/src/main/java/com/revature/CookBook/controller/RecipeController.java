@@ -40,8 +40,6 @@ public class RecipeController {
 		this.recipeService = recipeService;
 	}
 
-	// @RequestMapping(path = "recipe", method = RequestMethod.POST)
-	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("recipe")
 	public void createRecipe(@RequestBody RecipeDto recipeDto) {
 		System.out.println(recipeDto.toString());
@@ -62,6 +60,7 @@ public class RecipeController {
 		RecipeDto recipeDto = new RecipeDto(recipe);
 		return recipeDto;
 	}
+
 	@RequestMapping(path = "recipe", method = RequestMethod.GET)
 	public List<RecipeDto> readRecipes() {
 		List <RecipeDto> recipeDtoList=new ArrayList<>();
@@ -71,6 +70,7 @@ public class RecipeController {
 		}
 		return recipeDtoList;
 	}
+
 	@RequestMapping(path = "/recipe/{recipeId}", method = RequestMethod.PUT)
 	public void updateRecipe(@PathVariable(name = "recipeId") RecipeDto recipe) {
 

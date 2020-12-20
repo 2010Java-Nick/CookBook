@@ -23,7 +23,6 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/user")
 	public boolean createUser(@RequestBody UserDto user, HttpServletResponse response) {
 	
@@ -31,7 +30,7 @@ public class UserController {
 		System.out.println(user);
 
 		if(userService.createUser(user.toPojo())) {
-			response.setStatus(201);
+			response.setStatus(200);
 			return true;
 		}
 		else {
@@ -41,12 +40,11 @@ public class UserController {
 		
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/user/{username}")
 	public UserDto readUser(@PathVariable(name = "username") String username, HttpServletResponse response) {
 		
 		UserDto userDto = new UserDto(userService.readUser(username));
-		
+		response.setStatus(200);
 		return userDto;
 	}
 }
