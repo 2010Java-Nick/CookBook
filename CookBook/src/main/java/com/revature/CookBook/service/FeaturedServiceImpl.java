@@ -2,11 +2,6 @@ package com.revature.CookBook.service;
 
 import java.util.List;
 
-<<<<<<< HEAD
-=======
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
->>>>>>> 694d4a2c3012ae4b72a7e66f2e96e5f519ae92f0
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +12,7 @@ import com.revature.CookBook.pojos.Recipe;
 @Service
 public class FeaturedServiceImpl implements FeaturedService {
 
-	private FeaturedDao featuredDao;
+	private FeaturedDao featuredDao; 
 
 	@Autowired
 	public void setFeaturedDao(FeaturedDao featuredDao) {

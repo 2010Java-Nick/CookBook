@@ -1,5 +1,8 @@
 package com.revature.CookBook.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -10,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.CookBook.dto.CookBookDto;
+import com.revature.CookBook.dto.RecipeDto;
 import com.revature.CookBook.pojos.CookBook;
+import com.revature.CookBook.pojos.Recipe;
 import com.revature.CookBook.service.CookBookService;
 
 @RestController
@@ -39,11 +44,20 @@ public class CookBookController {
 
 	@RequestMapping(path = "cookbook/{cookbookId}", method = RequestMethod.GET)
 	public CookBookDto readCookBook(@PathVariable(name = "cookbookId") int cookBookId) {
-
 		CookBook cookBook = cookBookService.readCookBook(cookBookId);
 		ResponseEntity<CookBookDto> re = new ResponseEntity<CookBookDto>(HttpStatus.OK);
 		CookBookDto cookBookDto = new CookBookDto(cookBook);
 		return cookBookDto;
+	}
+	
+	@RequestMapping(path = "cookbook", method = RequestMethod.GET)
+	public List<CookBookDto> readCookBook() {
+		List <CookBookDto> cookBookDtoList=new ArrayList<>();
+		List <CookBook> cookBookList = cookBookService.getAllCookBooks();
+		for ( CookBook cookBook: cookBookList ) {
+			cookBookDtoList.add( new CookBookDto(cookBook));
+		}
+		return cookBookDtoList;
 	}
 	
 }

@@ -64,7 +64,7 @@ public class RecipeController {
 	@RequestMapping(path = "recipe", method = RequestMethod.GET)
 	public List<RecipeDto> readRecipes() {
 		List <RecipeDto> recipeDtoList=new ArrayList<>();
-		List <Recipe> recipeList=recipeService.getAllRecipes();
+		List <Recipe> recipeList = recipeService.getAllRecipes();
 		for ( Recipe recipe: recipeList ) {
 			recipeDtoList.add( new RecipeDto(recipe));
 		}
