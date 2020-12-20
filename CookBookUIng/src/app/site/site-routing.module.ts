@@ -18,8 +18,7 @@ const routes: Routes = [
       { path: 'mod', component: ViewModeratorHomeComponent },
       { path : 'recipe/:id', component : ViewARecipeComponent},
       { path : 'createRecipe', component : ViewCreateRecipeComponent},
-      { path : 'recipe', component : ViewRecipeListComponent},
-      { path : 'search', component : ViewSearchPageComponent}
+      { path : 'search', component : ViewRecipeListComponent}
     ],
   },
 ];

@@ -1,5 +1,9 @@
 <h1> Create a New Recipe! </h1>
+<!-- <div ngIf*= "error" class="alert alert-danger">
+            {{error}}
+        </div> -->
 <div class ="container mb-3 ">
+
 <form [formGroup]="createRecipeForm" 
         (ngSubmit)="onSubmit(createRecipeForm.value)">
     <div class="form-group">

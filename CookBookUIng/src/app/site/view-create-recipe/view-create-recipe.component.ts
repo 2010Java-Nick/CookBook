@@ -14,7 +14,7 @@ export class ViewCreateRecipeComponent implements OnInit {
 
   //@Input() recipe!:Recipe;
   //recipe={} as Recipe;
-  time={ hour: 1, minute: 30}
+  error=' ';
   createRecipeForm;
 
   constructor(
