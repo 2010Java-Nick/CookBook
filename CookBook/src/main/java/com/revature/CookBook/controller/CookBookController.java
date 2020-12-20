@@ -14,13 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.revature.CookBook.dto.CookBookDto;
 import com.revature.CookBook.pojos.CookBook;
+import com.revature.CookBook.pojos.User;
 import com.revature.CookBook.service.CookBookService;
+import com.revature.CookBook.service.UserService;
 
 @RestController
 public class CookBookController {
 
 	CookBookService cookBookService;
-
+    UserService userService;
 	
 	@Autowired
 	public void setCookBookService(CookBookService cookBookService) {
@@ -31,8 +33,8 @@ public class CookBookController {
 	@PostMapping("cookbook")
 	public void createCookBook(@RequestBody CookBookDto cookBookDto) {
 		CookBook cookBook = cookBookDto.toPojo();
-		//User user = userService.readUser(cookBookDto.getAuthor());
-		//cookBook.setUser(user);
+		User user = userService.readUser(cookBookDto.getAuthor());
+		cookBook.setUser(user);
 		boolean result = cookBookService.createCookBook(cookBook);
 		ResponseEntity<CookBookDto> re = new ResponseEntity<CookBookDto>(HttpStatus.CREATED);
 	}
