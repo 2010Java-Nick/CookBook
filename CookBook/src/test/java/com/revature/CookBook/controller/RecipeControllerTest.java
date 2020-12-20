@@ -29,44 +29,18 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.CookBook.controller.RecipeControllerTest.TestConfig;
-import com.revature.CookBook.daos.RecipeDao;
+import com.revature.CookBook.config.TestConfig;
 import com.revature.CookBook.dto.RecipeDto;
 import com.revature.CookBook.pojos.Recipe;
 import com.revature.CookBook.service.RecipeService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { RecipeControllerTest.TestConfig.class })
+@ContextConfiguration(classes = { TestConfig.class })
 @WebAppConfiguration
 public class RecipeControllerTest {
-	
-	@Configuration
-	@EnableWebMvc
-	@ComponentScan(basePackages = { "com.revature.CookBook" })
-	public static class TestConfig {
-		@Bean
-		public SessionFactory sessionFactory() {
-	
-			return Mockito.mock(SessionFactory.class);
-		}
-	
-	
-		@Bean
-		public RecipeDao recipeDao() {
-	
-			return Mockito.mock(RecipeDao.class);
-		}
-	
-		@Bean
-		public RecipeService recipeService() {
-	
-			return Mockito.mock(RecipeService.class);
-		}
-	}
+
 	@Mock
 	private MockMvc mockMvc;
 	private RecipeController recipeController;

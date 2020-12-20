@@ -16,6 +16,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ViewSearchPageComponent } from './view-search-page/view-search-page.component';
 import { RecipeFilterPipe } from '../pipes/search-filter.pipe';
 import { RecipeListItemComponent } from './recipe-list-item/recipe-list-item.component';
+import { PendingRequestsComponent } from './view-moderator-home/pending-requests/pending-requests.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { RecipeListItemComponent } from './recipe-list-item/recipe-list-item.com
     SearchBarComponent,
     ViewSearchPageComponent,
     RecipeFilterPipe,
-    RecipeListItemComponent
+    RecipeListItemComponent,
+    PendingRequestsComponent
   ],
   imports: [
     CommonModule,

@@ -1,1 +1,17 @@
-<p>view-user-home works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-info home-btn" (click)='navCreateRecipe()'>Create Recipe</button>
+            <button class="btn btn-info home-btn" (click)='navCreateCookBook()'>Create Cookbook</button>
+        </div>
+        <div class="col">
+            <button class="btn btn-info home-btn" (click)='navFavorites()'>Favorites</button>
+            <button class="btn btn-info home-btn" (click)='navCookBooks()'>Your Cookbooks</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-info home-btn-span" (click)='navSearch()'>Search</button>
+        </div>
+    </div>
+</div>

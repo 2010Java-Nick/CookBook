@@ -11,5 +11,5 @@ export interface Recipe {
     tags : string;
     ingredients : string;
     description : string;
-    recipeImage: File;
+    recipeImage?: File;
 }

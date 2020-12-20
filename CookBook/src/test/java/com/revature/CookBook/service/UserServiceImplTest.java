@@ -38,7 +38,7 @@ public class UserServiceImplTest {
 
 	@Before
 	public void setUp() throws Exception {
-        userService.setUserDao(mockDao);
+        
 		this.user = new User(0, "username", "password", "first", "last", new Authorization(1, "STANDARD"));
 	}
 

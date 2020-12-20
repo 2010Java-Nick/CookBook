@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { User } from '../models/user.model';
-import { Observable } from 'rxjs';
+import { Observable, of, Subscriber, using } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountCreationService {
 
-  private readonly USER_URL = ':8080/user';
+  private readonly USER_URL = 'http://localhost:9091/user';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,26 +24,22 @@ export class AccountCreationService {
    *
    * Password is at least 8 characters long.
    */
-  public createNewUser(user: User): boolean {
-
-    console.log(user.firstName.search(`[^a-zA-Z\-]`));
+  public createNewUser(user: User): Observable<boolean> {
 
     if (user.firstName.search(`[^a-zA-Z\-]`) > 0 ||
-        user.lastName.search(`[^a-zA-Z\-]`) > 0 ||
-        user.username.search(`[^a-zA-Z0-9]`) > 0 ||
-        user.password.length < 8
-        ){
-      return false;
+      user.lastName.search(`[^a-zA-Z\-]`) > 0 ||
+      user.username.search(`[^a-zA-Z0-9_]`) > 0 ||
+      user.password.length < 8
+    ) {
+      return of(false);
     }
 
-    this.httpClient.post<User>(this.USER_URL, user);
-    return true;
+    return this.httpClient.post<boolean>(this.USER_URL, user);
 
-    // [^a-zA-Z\-]
   }
 
-  public getUser(username: string): Observable<HttpResponse<User>> | null {
+  public getUser(username: string): Observable<HttpResponse<User>> {
 
-    return this.httpClient.get<User>(this.USER_URL + '/' + username, {observe: 'response'});
+    return this.httpClient.get<User>(this.USER_URL + '/' + username, { observe: 'response' });
   }
 }

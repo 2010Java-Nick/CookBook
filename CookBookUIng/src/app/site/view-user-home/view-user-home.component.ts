@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-user-home',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewUserHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  navCreateRecipe(): void {
+    this.router.navigate(['/createRecipe']);
+  }
+
+  navCreateCookBook(): void {
+    this.router.navigate(['/createCookBook']);
+  }
+
+  navFavorites(): void {
+    this.router.navigate(['/favorites']);
+  }
+
+  navCookBooks(): void {
+    this.router.navigate(['/cookbook']);
+  }
+
+  navSearch(): void {
+    this.router.navigate(['/search']);
   }
 
 }
