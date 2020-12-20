@@ -3,27 +3,20 @@ package com.revature.CookBook.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.revature.CookBook.dto.Dto;
 import com.revature.CookBook.dto.RecipeDto;
 import com.revature.CookBook.pojos.Recipe;
 import com.revature.CookBook.pojos.User;
 import com.revature.CookBook.service.RecipeService;
 import com.revature.CookBook.service.UserService;
 
-//@RequestMapping("")
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 @RestController
 public class RecipeController {
 
@@ -46,8 +39,7 @@ public class RecipeController {
 		Recipe recipe = recipeDto.toPojo();
 		User user = userService.readUser(recipeDto.getAuthor());
 		recipe.setUser(user);
-		boolean result = recipeService.createRecipe(recipe);
-		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>(HttpStatus.CREATED);
+		recipeService.createRecipe(recipe);
 
 	}
 
@@ -55,18 +47,16 @@ public class RecipeController {
 	public RecipeDto readRecipe(@PathVariable(name = "recipeId") int recipeId) {
 		Recipe recipe = recipeService.readRecipe(recipeId);
 
-		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>(HttpStatus.OK);
-
 		RecipeDto recipeDto = new RecipeDto(recipe);
 		return recipeDto;
 	}
 
 	@RequestMapping(path = "recipe", method = RequestMethod.GET)
 	public List<RecipeDto> readRecipes() {
-		List <RecipeDto> recipeDtoList=new ArrayList<>();
-		List <Recipe> recipeList=recipeService.getAllRecipes();
-		for ( Recipe recipe: recipeList ) {
-			recipeDtoList.add( new RecipeDto(recipe));
+		List<RecipeDto> recipeDtoList = new ArrayList<>();
+		List<Recipe> recipeList = recipeService.getAllRecipes();
+		for (Recipe recipe : recipeList) {
+			recipeDtoList.add(new RecipeDto(recipe));
 		}
 		return recipeDtoList;
 	}
@@ -75,7 +65,6 @@ public class RecipeController {
 	public void updateRecipe(@PathVariable(name = "recipeId") RecipeDto recipe) {
 
 		recipeService.updateRecipe(recipe.toPojo());
-		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>(HttpStatus.OK);
 
 	}
 

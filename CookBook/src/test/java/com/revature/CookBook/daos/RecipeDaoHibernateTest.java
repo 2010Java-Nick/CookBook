@@ -56,9 +56,7 @@ public class RecipeDaoHibernateTest {
 	@Test
 	public void readRecipeTest() {
 		Session session;
-		User user= new User(1, "username", "password", "first", "last", new Authorization(1, "STANDARD"));
 		try{
-			
 			try{
 				session = sessionFactory.openSession();
 				Transaction tx = session.beginTransaction();

@@ -2,13 +2,14 @@ package com.revature.CookBook.controller;
 
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.CookBook.config.TestConfig;
+import com.revature.CookBook.dto.RecipeDto;
+import com.revature.CookBook.pojos.Recipe;
+import com.revature.CookBook.service.RecipeService;
 
-import org.hibernate.SessionFactory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,10 +18,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -29,12 +26,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.CookBook.config.TestConfig;
-import com.revature.CookBook.dto.RecipeDto;
-import com.revature.CookBook.pojos.Recipe;
-import com.revature.CookBook.service.RecipeService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestConfig.class })
@@ -67,7 +58,7 @@ public class RecipeControllerTest {
 		mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
 
 		ObjectMapper obj = new ObjectMapper();
-		this.recipeDto = new RecipeDto(1, "Recipe Name"," Author Name ",false, 3, 20, 20,"1 step, 2 step", "tag1,tag2, tag4 tag4 ", "ingresiend 1 , ingredient 2, ingredient 3 ", "Descriptiooin asja", null );
+		this.recipeDto = new RecipeDto(1, "Recipe Name"," Author Name ",false, 3, 20, 20,"1 step, 2 step", "tag1,tag2, tag4 tag4 ", "ingredient 1 , ingredient 2, ingredient 3 ", "Description stuff", null );
 		this.recipe = recipeDto.toPojo();
 		this.recipeJson = obj.writeValueAsString(recipeDto);
 	}

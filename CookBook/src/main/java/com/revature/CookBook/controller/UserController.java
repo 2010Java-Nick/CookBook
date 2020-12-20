@@ -2,16 +2,15 @@ package com.revature.CookBook.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.CookBook.dto.UserDto;
+import com.revature.CookBook.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.revature.CookBook.dto.UserDto;
-import com.revature.CookBook.service.UserService;
 
 @RestController
 public class UserController {
