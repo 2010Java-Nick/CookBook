@@ -27,12 +27,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.CookBook.config.TestConfig;
 import com.revature.CookBook.dto.RecipeDto;
-import com.revature.CookBook.dto.UserDto;
 import com.revature.CookBook.pojos.Authorization;
 import com.revature.CookBook.pojos.Recipe;
 import com.revature.CookBook.pojos.User;
 import com.revature.CookBook.service.FeaturedService;
-import com.revature.CookBook.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestConfig.class })
