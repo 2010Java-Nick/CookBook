@@ -1,0 +1,7 @@
+<div class="container " >
+    <div class="row row-cols-1 row-cols-md-2"  >
+        <div class="col mb-4" *ngFor="let recipe of recipeList">
+            <div class="card h-100" class = "app-pending-featured-card" [recipe] = "recipe" (event)="propagateEvent($event)">
+        </div>
+    </div>
+</div>

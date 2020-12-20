@@ -18,7 +18,14 @@ export class FeaturedService {
   }
 
   public getFeaturedRecipes(): Observable<HttpResponse<Recipe[]>> {
-    
+
     return this.httpClient.get<Recipe[]>(this.FEATURED_URL, { observe: 'response' });
+  }
+
+  public completePending(recipe: Recipe): Observable<HttpResponse<boolean>> {
+
+    const response = this.httpClient.put<boolean>(this.FEATURED_URL, recipe, { observe: 'response' });
+    response.subscribe();
+    return response;
   }
 }

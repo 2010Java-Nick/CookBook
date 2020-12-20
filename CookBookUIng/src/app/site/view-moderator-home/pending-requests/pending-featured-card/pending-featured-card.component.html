@@ -1,0 +1,18 @@
+<div class="card h-100">
+  <div class="card-body">
+    <h5 class="card-title">
+      <a [routerLink]="['/recipe', recipe.id]"> {{ recipe.name }}</a>
+    </h5>
+    <p class="card-text">{{ recipe.description }}</p>
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-success btn-block" (click)="approveFeatured()">Approve</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-danger btn-block" (click)="denyFeatured()">Deny</button>
+      </div>
+    </div>
+  </div>
+</div>

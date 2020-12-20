@@ -7,7 +7,7 @@ import { ViewModeratorHomeComponent } from './view-moderator-home/view-moderator
 import { ViewUserHomeComponent } from './view-user-home/view-user-home.component';
 import { SiteComponent } from './site.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
-import { ViewARecipeComponent} from './view-a-recipe/view-a-recipe.component'
+import { ViewARecipeComponent} from './view-a-recipe/view-a-recipe.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewCreateRecipeComponent } from './view-create-recipe/view-create-recipe.component';
@@ -17,6 +17,8 @@ import { ViewSearchPageComponent } from './view-search-page/view-search-page.com
 import { RecipeFilterPipe } from '../pipes/search-filter.pipe';
 import { RecipeListItemComponent } from './recipe-list-item/recipe-list-item.component';
 import { PendingRequestsComponent } from './view-moderator-home/pending-requests/pending-requests.component';
+import { PendingFeaturedListComponent } from './view-moderator-home/pending-requests/pending-featured-list/pending-featured-list.component';
+import { PendingFeaturedCardComponent } from './view-moderator-home/pending-requests/pending-featured-card/pending-featured-card.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { PendingRequestsComponent } from './view-moderator-home/pending-requests
     ViewSearchPageComponent,
     RecipeFilterPipe,
     RecipeListItemComponent,
-    PendingRequestsComponent
+    PendingRequestsComponent,
+    PendingFeaturedListComponent,
+    PendingFeaturedCardComponent
   ],
   imports: [
     CommonModule,
