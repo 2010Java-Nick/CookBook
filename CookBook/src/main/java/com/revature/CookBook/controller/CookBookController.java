@@ -27,12 +27,9 @@ public class CookBookController {
 		this.cookBookService = cookBookService;
 	}
 	
-    //will need to call suer service to make a user for author
-	//Create recipe
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("cookbook")
 	public void createCookBook(@RequestBody CookBookDto cookBookDto) {
-		
 		CookBook cookBook = cookBookDto.toPojo();
 		//User user = userService.readUser(cookBookDto.getAuthor());
 		//cookBook.setUser(user);
