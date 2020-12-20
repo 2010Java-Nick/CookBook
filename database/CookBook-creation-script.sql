@@ -5,6 +5,7 @@
 --DROP TABLE recipe;
 --DROP TABLE user_profile;
 --DROP TABLE auth;
+--DROP TABLE pending_featured;
 
 CREATE TABLE recipe (
   "id" serial primary key,
@@ -21,8 +22,9 @@ CREATE TABLE recipe (
   "recipe_image" bytea
 );
 
-create table pending_recipe (
-	"id" int4 primary key
+create table pending_featured (
+	"id" serial primary key,
+	"recipe_id" int4 not null
 );
 
 CREATE TABLE user_profile (
@@ -77,9 +79,9 @@ ALTER TABLE recipe ADD CONSTRAINT FK_user
 FOREIGN KEY (author) REFERENCES user_profile (id) 
 ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE pending_recipe ADD CONSTRAINT FK_recipe
-FOREIGN KEY (id) REFERENCES recipe (id) 
-ON DELETE no action ON UPDATE CASCADE;
+ALTER TABLE pending_featured ADD CONSTRAINT FK_recipe
+FOREIGN KEY (recipe_id) REFERENCES recipe (id) 
+ON DELETE cascade ON UPDATE CASCADE;
 
 ALTER TABLE cookbook_to_recipe ADD CONSTRAINT FK_many_to_cookbook
 FOREIGN KEY (cookbook_id) REFERENCES cookbook (id) 

@@ -7,8 +7,9 @@ import { AccountCreationService } from './account-creation.service';
 
 class MockHttp {
 
-  public post<T>(url: string, obj: T): void {
-    url.toString();
+  public post<T>(url: string, obj: T): Observable<HttpResponse<boolean>> {
+    const response: HttpResponse<boolean> = new HttpResponse({body: true});
+    return of(response);
   }
 
   public get(url: string, username: string): Observable<HttpResponse<User>> {
