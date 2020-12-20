@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,6 @@ public class FeaturedController {
 		this.featuredService = featuredService;
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/featured")
 	public boolean createFeatured(@RequestBody RecipeDto recipe, HttpServletResponse response) {
 
@@ -43,7 +43,6 @@ public class FeaturedController {
 
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/featured")
 	public List<RecipeDto> readPendingRecipes(HttpServletResponse response) {
 
@@ -57,6 +56,21 @@ public class FeaturedController {
 		});
 		
 		return recipeDtos;
+	}
+
+	@PutMapping("/featured")
+	public boolean approvalForFeatured(@RequestBody RecipeDto recipe, HttpServletResponse response){
+
+		System.out.println("approvalForFeatured Request received");
+		System.out.println(recipe);
+
+		if (featuredService.approvalForFeatured(recipe)) {
+			response.setStatus(201);
+			return true;
+		} else {
+			response.setStatus(400);
+			return false;
+		}
 	}
 
 }

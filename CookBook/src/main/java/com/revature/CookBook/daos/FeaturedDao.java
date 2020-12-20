@@ -12,5 +12,7 @@ public interface FeaturedDao {
 	public void createFeatured(Featured featured) throws HibernateException;
 	
 	public List<Recipe> readPendingRecipes() throws HibernateException;
+
+	public void deletePending(Recipe recipe) throws HibernateException;
 	
 }
