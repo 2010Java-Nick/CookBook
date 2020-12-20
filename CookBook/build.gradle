@@ -18,7 +18,7 @@ java {
 
 jar {
     manifest {
-        attributes 'Main-Class' : 'CookBook.ServerDriver'
+        attributes 'Main-Class' : 'com.revature.CookBook.ServerDriver'
     }
     
     from {
