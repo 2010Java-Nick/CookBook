@@ -10,9 +10,11 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import com.revature.CookBook.pojos.Authorization;
+import com.revature.CookBook.pojos.CookBook;
 import com.revature.CookBook.pojos.Featured;
 import com.revature.CookBook.pojos.Recipe;
 import com.revature.CookBook.pojos.User;
+import com.revature.CookBook.pojos.WeeklyCookBook;
 
 public class SessionFactoryUtil {
 	
@@ -46,6 +48,8 @@ public class SessionFactoryUtil {
 						.addAnnotatedClass(Authorization.class)
 						.addAnnotatedClass(Recipe.class)
 						.addAnnotatedClass(Featured.class)
+						//.addAnnotatedClass(CookBook.class)
+						//.addAnnotatedClass(WeeklyCookBook.class)
 						.getMetadataBuilder()
 						.build();
 			
