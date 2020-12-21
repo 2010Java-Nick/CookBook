@@ -22,7 +22,7 @@ const routes: Routes = [
       { path : 'createRecipe', component : ViewCreateRecipeComponent},
       { path : 'search', component : ViewRecipeListComponent},
       { path : 'cookbooks', component : ViewCookbookListComponent},
-      { path : 'cookbooks/:id', component : ViewACookbookComponent}
+      { path : 'cookbook/:id', component : ViewACookbookComponent}
     ],
   },
 ];

@@ -15,6 +15,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CookBookDto implements Dto<CookBook>{
 	
+	private int id;
+	
 	private String name;
 	
 	private String author;
@@ -30,6 +32,7 @@ public class CookBookDto implements Dto<CookBook>{
 
 	public CookBookDto(CookBook cookBook) {
 		super();
+		this.id=cookBook.getCookBookId();
 		this.name = cookBook.getName();
 		this.author = cookBook.getUser().getUsername();
 		this.featured = cookBook.isFeatured();

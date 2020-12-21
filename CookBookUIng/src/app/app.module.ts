@@ -8,13 +8,9 @@ import { SiteModule } from './site/site.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
-    AppComponent,
-    
-  
-    
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     LandingModule,
     SiteModule,
     NgbModule,
-    HttpClientModule,
+    HttpClientModule
 
   ],
   providers: [],

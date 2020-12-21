@@ -20,7 +20,6 @@ import { PendingRequestsComponent } from './view-moderator-home/pending-requests
 import { ViewCookbookListComponent } from './view-cookbook-list/view-cookbook-list.component';
 import { ViewACookbookComponent } from './view-a-cookbook/view-a-cookbook.component';
 
-
 @NgModule({
   declarations: [
     SiteComponent,
