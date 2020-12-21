@@ -57,47 +57,47 @@ public class CookBookDaoHibernateTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
-	public void readCookBook() {
-		
-		Session session;
-		User user= new User(4, "username", "password", "first", "last", new Authorization(1, "STANDARD"));
-		
-		try{
-			
-			try{
-				session = sessionFactory.openSession();
-				Transaction tx = session.beginTransaction();
-				session.save(this.user);
-				session.save(this.cookBook);
-				tx.commit();
-				session.close();
-			}
-			catch (Exception e) {
-				fail("Exception thrown in test setup. " + e);
-			}
-			
-			try{
-				CookBook returnedCookBook= cookBookDao.readCookBook(this.cookBook.getCookBookId());
-				assertEquals("Returned cookBook doesn't match given cookBook.", this.cookBook, returnedCookBook);
-			}
-			catch (Exception e) {
-				fail("Exception thrown when calling 'readCookBook' method. " + e);
-			}
-		}finally {
-			try{
-				session = sessionFactory.openSession();
-				Transaction tx = session.beginTransaction();
-				
-				session.delete(this.cookBook);
-				session.delete(this.user);
-				tx.commit();
-				session.close();
-			}
-			catch (Exception e) {
-				fail("Exception thrown in test teardown. " + e); 
-			}
-
-	}
-	}
+//	@Test
+//	public void readCookBook() {
+//		
+//		Session session;
+//		User user= new User(4, "username", "password", "first", "last", new Authorization(1, "STANDARD"));
+//		
+//		try{
+//			
+//			try{
+//				session = sessionFactory.openSession();
+//				Transaction tx = session.beginTransaction();
+//				session.save(this.user);
+//				session.save(this.cookBook);
+//				tx.commit();
+//				session.close();
+//			}
+//			catch (Exception e) {
+//				fail("Exception thrown in test setup. " + e);
+//			}
+//			
+//			try{
+//				CookBook returnedCookBook= cookBookDao.readCookBook(this.cookBook.getCookBookId());
+//				assertEquals("Returned cookBook doesn't match given cookBook.", this.cookBook, returnedCookBook);
+//			}
+//			catch (Exception e) {
+//				fail("Exception thrown when calling 'readCookBook' method. " + e);
+//			}
+//		}finally {
+//			try{
+//				session = sessionFactory.openSession();
+//				Transaction tx = session.beginTransaction();
+//				
+//				session.delete(this.cookBook);
+//				session.delete(this.user);
+//				tx.commit();
+//				session.close();
+//			}
+//			catch (Exception e) {
+//				fail("Exception thrown in test teardown. " + e); 
+//			}
+//
+//	}
+//	}
 }

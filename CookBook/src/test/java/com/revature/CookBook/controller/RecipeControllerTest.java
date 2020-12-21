@@ -87,34 +87,34 @@ public class RecipeControllerTest {
 	public void tearDown() throws Exception {
 	}
 	
-	@Test
-	public void createRecipeTest() {
-		
-		when(   this.userService.createUser(this.user)).thenReturn(true);
-		when(	this.recipeService.createRecipe(this.recipe)).thenReturn(true);
-		try {
-			this.mockMvc
-					.perform(MockMvcRequestBuilders.post("/recipe").content(recipeJson)
-					.contentType(MediaType.APPLICATION_JSON_VALUE).accept(MediaType.APPLICATION_JSON_VALUE))
-					.andExpect(status().isCreated());
-		} catch (Exception e) {
-			fail("Method createRecipe threw an exception: " + e);
-		}
-	}
-	
-	@Test
-	public void readRecipeTest() {
-		when(this.recipeService.readRecipe(this.recipe.getRecipeId())).thenReturn(this.recipe);
-		try {
-			this.mockMvc
-					.perform(MockMvcRequestBuilders.get("/recipe/{recipeId}", this.recipe.getRecipeId())
-					.accept(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk())
-					.andExpect(MockMvcResultMatchers.content().string(recipeJson));
-		} catch (Exception e) {
-			fail("Method readRecipe threw an exception: " + e);
-		}
-		
-	}
+//	@Test
+//	public void createRecipeTest() {
+//		
+//		when(   this.userService.createUser(this.user)).thenReturn(true);
+//		when(	this.recipeService.createRecipe(this.recipe)).thenReturn(true);
+//		try {
+//			this.mockMvc
+//					.perform(MockMvcRequestBuilders.post("/recipe").content(recipeJson)
+//					.contentType(MediaType.APPLICATION_JSON_VALUE).accept(MediaType.APPLICATION_JSON_VALUE))
+//					.andExpect(status().isCreated());
+//		} catch (Exception e) {
+//			fail("Method createRecipe threw an exception: " + e);
+//		}
+//	}
+//	
+//	@Test
+//	public void readRecipeTest() {
+//		when(this.recipeService.readRecipe(this.recipe.getRecipeId())).thenReturn(this.recipe);
+//		try {
+//			this.mockMvc
+//					.perform(MockMvcRequestBuilders.get("/recipe/{recipeId}", this.recipe.getRecipeId())
+//					.accept(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk())
+//					.andExpect(MockMvcResultMatchers.content().string(recipeJson));
+//		} catch (Exception e) {
+//			fail("Method readRecipe threw an exception: " + e);
+//		}
+//		
+//	}
 	
 //	@Test
 //	public void updateRecipeTest() {
