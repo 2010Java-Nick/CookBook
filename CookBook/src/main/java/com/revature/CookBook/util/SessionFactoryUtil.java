@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.revature.CookBook.pojos.Authorization;
+import com.revature.CookBook.pojos.CookBook;
 import com.revature.CookBook.pojos.Featured;
 import com.revature.CookBook.pojos.Recipe;
 import com.revature.CookBook.pojos.User;
@@ -42,9 +43,13 @@ public class SessionFactoryUtil {
 			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().applySettings(settings)
 					.build();
 
-			Metadata metadata = new MetadataSources(standardRegistry).addAnnotatedClass(User.class)
-					.addAnnotatedClass(Authorization.class).addAnnotatedClass(Recipe.class)
-					.addAnnotatedClass(Featured.class).addAnnotatedClass(CookBook.class).getMetadataBuilder().build();
+			Metadata metadata = new MetadataSources(standardRegistry)
+					.addAnnotatedClass(User.class)
+					.addAnnotatedClass(Authorization.class)
+					.addAnnotatedClass(Recipe.class)
+					.addAnnotatedClass(Featured.class)
+					.addAnnotatedClass(CookBook.class)
+					.getMetadataBuilder().build();
 
 			sessionFactory = metadata.getSessionFactoryBuilder().build();
 

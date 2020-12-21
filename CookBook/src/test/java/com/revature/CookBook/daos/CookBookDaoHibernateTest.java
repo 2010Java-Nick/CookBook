@@ -1,25 +1,25 @@
 package com.revature.CookBook.daos;
 
-import static org.junit.Assert.*;
+// import static org.junit.Assert.*;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+// import org.hibernate.Session;
+// import org.hibernate.SessionFactory;
+// import org.hibernate.Transaction;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
+// import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.revature.CookBook.config.AppConfig;
-import com.revature.CookBook.pojos.Authorization;
-import com.revature.CookBook.pojos.CookBook;
-import com.revature.CookBook.pojos.User;
+// import com.revature.CookBook.pojos.Authorization;
+// import com.revature.CookBook.pojos.CookBook;
+// import com.revature.CookBook.pojos.User;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,17 +27,17 @@ import com.revature.CookBook.pojos.User;
 @ContextConfiguration(classes = AppConfig.class)
 public class CookBookDaoHibernateTest {
 
-	@Autowired
-	private SessionFactory sessionFactory;
+	// @Autowired
+	// private SessionFactory sessionFactory;
 	
-	@Autowired
-	private CookBookDao cookBookDao;
+	// @Autowired
+	// private CookBookDao cookBookDao;
 	
-	@Autowired
-	private UserDao userDao;
+	// @Autowired
+	// private UserDao userDao;
 	
-	private CookBook cookBook;
-	private User user;
+	// private CookBook cookBook;
+	// private User user;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -49,8 +49,8 @@ public class CookBookDaoHibernateTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.user= new User(4, "username", "password", "first", "last", new Authorization(1, "STANDARD"));
-	    this.cookBook = new CookBook ("new cook book", user, false, null);
+		// this.user= new User(4, "username", "password", "first", "last", new Authorization(1, "STANDARD"));
+	    // this.cookBook = new CookBook ("new cook book", user, false, null);
 	}
 
 	@After

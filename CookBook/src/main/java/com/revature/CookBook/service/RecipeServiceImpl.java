@@ -3,13 +3,12 @@ package com.revature.CookBook.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.CookBook.daos.RecipeDao;
+import com.revature.CookBook.pojos.Recipe;
+
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.revature.CookBook.daos.RecipeDao;
-import com.revature.CookBook.daos.UserDao;
-import com.revature.CookBook.pojos.Recipe;
 
 @Service
 public class RecipeServiceImpl implements RecipeService {

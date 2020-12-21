@@ -10,7 +10,7 @@ import { Recipe } from '../models/recipe.model';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    //Authorization: 'my-auth-token'
+    // Authorization: 'my-auth-token'
   }),
 };
 export interface Config {
@@ -26,7 +26,7 @@ export class ViewARecipeService {
 
   constructor(private httpClient: HttpClient) {}
 
-  private handleError(error: HttpErrorResponse) {
+  private handleError(error: HttpErrorResponse): Observable<never> {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);

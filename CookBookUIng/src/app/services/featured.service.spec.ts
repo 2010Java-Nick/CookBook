@@ -15,16 +15,16 @@ class MockHttp {
   public get(url: string): Observable<HttpResponse<Recipe[]>> {
     const recipe: Recipe = {
       id: 1,
-      name: "string",
-      author: "string",
+      name: 'string',
+      author: 'string',
       featured: false,
       servings: 1,
       prepTime: 1,
       cookTime: 1,
-      steps: "string",
-      tags: "string",
-      ingredients: "string",
-      description: "string"
+      steps: 'string',
+      tags: 'string',
+      ingredients: 'string',
+      description: 'string'
     };
     const recipes: Recipe[] = [recipe];
     const response: HttpResponse<Recipe[]> = new HttpResponse({ body: recipes });
@@ -38,16 +38,16 @@ describe('FeaturedService', () => {
 
   const recipe: Recipe = {
     id: 1,
-    name: "string",
-    author: "string",
+    name: 'string',
+    author: 'string',
     featured: false,
     servings: 1,
     prepTime: 1,
     cookTime: 1,
-    steps: "string",
-    tags: "string",
-    ingredients: "string",
-    description: "string"
+    steps: 'string',
+    tags: 'string',
+    ingredients: 'string',
+    description: 'string'
   };
   const recipes: Recipe[] = [recipe];
 
@@ -73,7 +73,8 @@ describe('FeaturedService', () => {
     });
     expect(returnedRecipes).toBeTruthy();
 
-    if (returnedRecipes !== undefined)
+    if (returnedRecipes !== undefined) {
       expect(returnedRecipes).toEqual(recipes);
+    }
   });
 });

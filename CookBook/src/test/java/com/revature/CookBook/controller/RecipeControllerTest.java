@@ -1,10 +1,13 @@
 package com.revature.CookBook.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+// import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.CookBook.config.TestConfig;
-import com.revature.CookBook.dto.RecipeDto;
-import com.revature.CookBook.pojos.Recipe;
+// import com.revature.CookBook.dto.RecipeDto;
+// import com.revature.CookBook.dto.UserDto;
+// import com.revature.CookBook.pojos.Recipe;
+// import com.revature.CookBook.pojos.User;
 import com.revature.CookBook.service.RecipeService;
+import com.revature.CookBook.service.UserService;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,8 +19,8 @@ import org.mockito.Mockito;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+// import org.springframework.test.web.servlet.MockMvc;
+// import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestConfig.class })
@@ -27,14 +30,14 @@ public class RecipeControllerTest {
 	@Mock
 	private RecipeService recipeService;
 	private RecipeController recipeController;
-	private MockMvc mockMvc;
+	// private MockMvc mockMvc;
 
-	private Recipe recipe;
-	private RecipeDto recipeDto;
-	private String recipeJson;
+	// private Recipe recipe;
+	// private RecipeDto recipeDto;
+	// private String recipeJson;
 
-	private User user;
-	private UserDto userDto;
+	// private User user;
+	// private UserDto userDto;
 
 	@Mock
 	private UserService userService;
@@ -53,17 +56,17 @@ public class RecipeControllerTest {
 		recipeController = new RecipeController();
 		recipeService = Mockito.mock(RecipeService.class);
 		recipeController.setRecipeService(recipeService);
-		mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
+		// mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
 
-		ObjectMapper obj = new ObjectMapper();
+		// ObjectMapper obj = new ObjectMapper();
 
-		this.userDto = new UserDto("username", "password", "Firstname", "Lastname", "STANDARD");
-		this.user = userDto.toPojo();
+		// this.userDto = new UserDto("username", "password", "Firstname", "Lastname", "STANDARD");
+		// this.user = userDto.toPojo();
 
-		this.recipeDto = new RecipeDto(1, "Recipe Name", "username", false, 3, 20, 20, "1 step, 2 step",
-				"tag1,tag2, tag4 tag4 ", "ingresiend 1 , ingredient 2, ingredient 3 ", "Descriptiooin asja", null);
-		this.recipe = recipeDto.toPojo();
-		this.recipeJson = obj.writeValueAsString(recipeDto);
+		// this.recipeDto = new RecipeDto(1, "Recipe Name", "username", false, 3, 20, 20, "1 step, 2 step",
+				// "tag1,tag2, tag4 tag4 ", "ingredient 1 , ingredient 2, ingredient 3 ", "Description stuff and things", null);
+		// this.recipe = recipeDto.toPojo();
+		// this.recipeJson = obj.writeValueAsString(recipeDto);
 	}
 
 	@After

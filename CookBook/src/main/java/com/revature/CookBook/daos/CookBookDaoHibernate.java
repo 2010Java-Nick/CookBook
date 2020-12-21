@@ -7,6 +7,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import com.revature.CookBook.pojos.CookBook;
+import com.revature.CookBook.pojos.Recipe;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,15 +17,10 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.revature.CookBook.pojos.CookBook;
-import com.revature.CookBook.pojos.Recipe;
-import com.revature.CookBook.pojos.WeeklyCookBook;
-
-
 @Repository(value = "cookBookDao")
-public class CookBookDaoHibernate implements CookBookDao{
+public class CookBookDaoHibernate implements CookBookDao {
 	SessionFactory sessionFactory;
-	
+
 	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
@@ -40,80 +38,49 @@ public class CookBookDaoHibernate implements CookBookDao{
 
 	@Override
 	public void createCookBook(CookBook cookBook) throws HibernateException {
-		Session sess = sessionFactory.openSession();
-		Transaction tx = sess.beginTransaction();
-		sess.save(cookBook);
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		session.save(cookBook);
 		tx.commit();
-		sess.close();
-		
+		session.close();
+
 	}
 
 	@Override
 	public List<CookBook> readAllCookBooks() throws HibernateException {
 		List<CookBook> cookBookList = null;
-		Session sess = sessionFactory.openSession();
-		CriteriaBuilder cb = sess.getCriteriaBuilder();
+		Session session = sessionFactory.openSession();
+		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<CookBook> cq = cb.createQuery(CookBook.class);
 		Root<CookBook> rootEntry = cq.from(CookBook.class);
 		CriteriaQuery<CookBook> all = cq.select(rootEntry);
-		TypedQuery<CookBook> allQuery = sess.createQuery(all);
+		TypedQuery<CookBook> allQuery = session.createQuery(all);
 		cookBookList = allQuery.getResultList();
-		sess.close();
+		session.close();
 		return cookBookList;
 	}
 
 	@Override
 	public void updateCookBook(CookBook cookBook) throws HibernateException {
-	    Session sess=sessionFactory.openSession();
-		
-			Transaction tx= sess.beginTransaction();
-			sess.update(cookBook);
-			tx.commit();
-			sess.close();
-		
+		Session session = sessionFactory.openSession();
+
+		Transaction tx = session.beginTransaction();
+		session.update(cookBook);
+		tx.commit();
+		session.close();
+
 	}
 
 	@Override
 	public void deleteCookBook(int cookBookId) throws HibernateException {
 		Recipe recipe = new Recipe();
 		recipe.setRecipeId(cookBookId);
-		Session sess=sessionFactory.openSession();
-		Transaction tx= sess.beginTransaction();
-		sess.delete(recipe);
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		session.delete(recipe);
 		tx.commit();
-		sess.close();
-		
-		
-	}
+		session.close();
 
-//	@Override
-//	public WeeklyCookBook readWeeklyCookBook(int weeklyCookBookId) throws HibernateException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public void createWeeklyweeklyCookBook(WeeklyCookBook weeklyCookBook) throws HibernateException {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public List<WeeklyCookBook> readAllWeeklyCookBooks() throws HibernateException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public void updateWeeklyCookBook(WeeklyCookBook weeklyCookBook) throws HibernateException {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public void deleteWeeklyCookBook(int weeklyCookBookId) throws HibernateException {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	}
 
 }
