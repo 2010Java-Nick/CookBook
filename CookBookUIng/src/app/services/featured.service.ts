@@ -8,7 +8,7 @@ import { Recipe } from '../models/recipe.model';
 })
 export class FeaturedService {
 
-  private readonly FEATURED_URL = 'http://localhost:9091/featured';
+  private readonly FEATURED_URL = 'http://104.45.131.181:9091/featured';
 
   constructor(private httpClient: HttpClient) { }
 

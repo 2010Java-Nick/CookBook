@@ -8,7 +8,7 @@ import { Observable, of, Subscriber, using } from 'rxjs';
 })
 export class AccountCreationService {
 
-  private readonly USER_URL = 'http://localhost:9091/user';
+  private readonly USER_URL = 'http://104.45.131.181:9091/user';
 
   constructor(private httpClient: HttpClient) { }
 
