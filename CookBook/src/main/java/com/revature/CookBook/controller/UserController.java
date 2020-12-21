@@ -24,9 +24,6 @@ public class UserController {
 	
 	@PostMapping("/user")
 	public boolean createUser(@RequestBody UserDto user, HttpServletResponse response) {
-	
-		System.out.println("Request received");
-		System.out.println(user);
 
 		if(userService.createUser(user.toPojo())) {
 			response.setStatus(200);

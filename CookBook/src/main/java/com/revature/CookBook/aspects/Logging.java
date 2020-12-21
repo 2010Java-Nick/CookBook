@@ -27,7 +27,7 @@ public class Logging {
     @Pointcut("within(com.revature.CookBook..*Recipe*)")
     public void pointcutForRecipeMethods() {}
 
-    @Pointcut("within(com.revature.CookBook..*Cookbook*)")
+    @Pointcut("within(com.revature.CookBook..*CookBook*)")
     public void pointcutForCookbookMethods() {}
 
     @Pointcut("within(com.revature.CookBook..*Featured*)")
@@ -37,13 +37,21 @@ public class Logging {
     // ------------------- User logging -------------------- \\
     @Before(value = "pointcutForUserMethods() && args(object)")
     public void logBeforeUserMethods(JoinPoint jp, Object object) {
-        LogUser.info(jp.getSignature() + "\nPassed-In: " + object.toString());
+
+        String objStr = object.toString().replace("\n", "").replace("\r", "");;
+        if (objStr.length() > 10) { objStr.substring(0, 40);}
+
+        LogUser.info(jp.getSignature() + "\nPassed-In: " + objStr);
     }
 
     @AfterReturning(value = "pointcutForUserMethods()", returning = "returnValue")
     public void logAfterReturningUserMethods(JoinPoint jp, Object returnValue) {
         if (returnValue != null){
-            LogUser.info("Returned: " + returnValue.toString() + " - " + jp.getSignature());
+
+            String objStr = returnValue.toString().replace("\n", "").replace("\r", "");;
+            if (objStr.length() > 10) { objStr.substring(0, 40);}
+
+            LogUser.info("Returned: " + objStr + " - " + jp.getSignature());
 
         } else { LogUser.info(jp.getSignature()); }
     }
@@ -57,13 +65,21 @@ public class Logging {
     // ------------------- Recipe logging -------------------- \\
     @Before(value = "pointcutForRecipeMethods() && args(object)")
     public void logBeforeRecipeMethods(JoinPoint jp, Object object) {
-        LogRecipe.info(jp.getSignature() + "\nPassed-In: " + object.toString());
+
+        String objStr = object.toString().replace("\n", "").replace("\r", "");;
+        if (objStr.length() > 10) { objStr.substring(0, 40);}
+
+        LogRecipe.info(jp.getSignature() + "\nPassed-In: " + objStr);
     }
 
     @AfterReturning(value = "pointcutForRecipeMethods()", returning = "returnValue")
     public void logAfterReturningRecipeMethods(JoinPoint jp, Object returnValue) {
         if (returnValue != null){
-            LogRecipe.info("Returned: " + returnValue.toString() + " - " + jp.getSignature());
+
+            String objStr = returnValue.toString().replace("\n", "").replace("\r", "");;
+            if (objStr.length() > 10) { objStr.substring(0, 40);}
+
+            LogRecipe.info("Returned: " + objStr + " - " + jp.getSignature());
 
         } else { LogRecipe.info(jp.getSignature()); }
     }
@@ -77,13 +93,21 @@ public class Logging {
     // ------------------- Cookbook logging -------------------- \\
     @Before(value = "pointcutForCookbookMethods() && args(object)")
     public void logBeforeCookbookMethods(JoinPoint jp, Object object) {
-        LogCookbook.info(jp.getSignature() + "\nPassed-In: " + object.toString());
+
+        String objStr = object.toString().replace("\n", "").replace("\r", "");;
+        if (objStr.length() > 10) { objStr.substring(0, 40);}
+
+        LogCookbook.info(jp.getSignature() + "\nPassed-In: " + objStr);
     }
 
     @AfterReturning(value = "pointcutForCookbookMethods()", returning = "returnValue")
     public void logAfterReturningCookbookMethods(JoinPoint jp, Object returnValue) {
         if (returnValue != null){
-            LogCookbook.info("Returned: " + returnValue.toString() + " - " + jp.getSignature());
+
+            String objStr = returnValue.toString().replace("\n", "").replace("\r", "");;
+            if (objStr.length() > 10) { objStr.substring(0, 40);}
+
+            LogCookbook.info("Returned: " + objStr + " - " + jp.getSignature());
 
         } else { LogCookbook.info(jp.getSignature()); }
     }
@@ -97,13 +121,21 @@ public class Logging {
     // ------------------- Featured logging -------------------- \\
     @Before(value = "pointcutForFeaturedMethods() && args(object)")
     public void logBeforeFeaturedMethods(JoinPoint jp, Object object) {
-        LogFeatured.info(jp.getSignature() + "\nPassed-In: " + object.toString());
+
+        String objStr = object.toString().replace("\n", "").replace("\r", "");;
+        if (objStr.length() > 10) { objStr.substring(0, 40);}
+
+        LogFeatured.info(jp.getSignature() + "\nPassed-In: " + objStr);
     }
 
     @AfterReturning(value = "pointcutForFeaturedMethods()", returning = "returnValue")
     public void logAfterReturningFeaturedMethods(JoinPoint jp, Object returnValue) {
         if (returnValue != null){
-            LogFeatured.info("Returned: " + returnValue.toString() + " - " + jp.getSignature());
+
+            String objStr = returnValue.toString().replace("\n", "").replace("\r", "");;
+            if (objStr.length() > 10) { objStr.substring(0, 40);}
+
+            LogFeatured.info("Returned: " + objStr + " - " + jp.getSignature());
 
         } else { LogFeatured.info(jp.getSignature()); }
     }

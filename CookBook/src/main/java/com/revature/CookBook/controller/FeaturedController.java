@@ -29,9 +29,6 @@ public class FeaturedController {
 	@PostMapping("/featured")
 	public boolean createFeatured(@RequestBody RecipeDto recipe, HttpServletResponse response) {
 
-		System.out.println("Request received");
-		System.out.println(recipe);
-
 		if (featuredService.createFeatured(recipe.toPojo())) {
 			response.setStatus(201);
 			return true;
@@ -45,8 +42,6 @@ public class FeaturedController {
 	@GetMapping("/featured")
 	public List<RecipeDto> readPendingRecipes(HttpServletResponse response) {
 
-		System.out.println("Request received");
-
 		List<Recipe> recipes = featuredService.readPendingRecipes();
 		List<RecipeDto> recipeDtos = new ArrayList<>(recipes.size());
 
@@ -59,9 +54,6 @@ public class FeaturedController {
 
 	@PutMapping("/featured")
 	public boolean approvalForFeatured(@RequestBody RecipeDto recipe, HttpServletResponse response){
-
-		System.out.println("approvalForFeatured Request received");
-		System.out.println(recipe);
 
 		if (featuredService.approvalForFeatured(recipe)) {
 			response.setStatus(201);
