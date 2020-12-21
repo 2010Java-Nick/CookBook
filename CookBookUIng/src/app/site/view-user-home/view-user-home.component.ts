@@ -14,23 +14,23 @@ export class ViewUserHomeComponent implements OnInit {
   }
 
   navCreateRecipe(): void {
-    this.router.navigate(['/createRecipe']);
+    this.router.navigate(['createRecipe']);
   }
 
   navCreateCookBook(): void {
-    this.router.navigate(['/createCookBook']);
+    this.router.navigate(['createCookBook']);
   }
 
   navFavorites(): void {
-    this.router.navigate(['/favorites']);
+    this.router.navigate(['favorites']);
   }
 
   navCookBooks(): void {
-    this.router.navigate(['/cookbook']);
+    this.router.navigate(['cookbooks']);
   }
 
   navSearch(): void {
-    this.router.navigate(['/search']);
+    this.router.navigate(['search']);
   }
 
 }
