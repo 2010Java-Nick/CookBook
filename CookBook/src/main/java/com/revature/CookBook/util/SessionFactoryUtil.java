@@ -44,10 +44,7 @@ public class SessionFactoryUtil {
 
 			Metadata metadata = new MetadataSources(standardRegistry).addAnnotatedClass(User.class)
 					.addAnnotatedClass(Authorization.class).addAnnotatedClass(Recipe.class)
-					.addAnnotatedClass(Featured.class)
-					// .addAnnotatedClass(CookBook.class)
-					// .addAnnotatedClass(WeeklyCookBook.class)
-					.getMetadataBuilder().build();
+					.addAnnotatedClass(Featured.class).addAnnotatedClass(CookBook.class).getMetadataBuilder().build();
 
 			sessionFactory = metadata.getSessionFactoryBuilder().build();
 

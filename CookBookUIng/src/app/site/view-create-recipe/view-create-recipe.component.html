@@ -1,43 +1,50 @@
 <h1> Create a New Recipe! </h1>
+<!-- <div ngIf*= "error" class="alert alert-danger">
+            {{error}}
+        </div> -->
 <div class ="container mb-3 ">
+
 <form [formGroup]="createRecipeForm" 
         (ngSubmit)="onSubmit(createRecipeForm.value)">
     <div class="form-group">
+        <div class="alert alert-danger" [hidden]="valid" role="alert">
+            <p>{{error}}</p>
+          </div>
         
         <label for="name">Recipe Name </label>
-    <input formControlName="name" name="recipename" class="form-control" type="text" placeholder="Recipe Name" id="Recipe Name" />
+    <input formControlName="name" required name="recipename" class="form-control" type="text" placeholder="Recipe Name" id="Recipe Name">
     </div>
     <div class="form-group">
         <label for="servings">Servings </label>
-    <input  formControlName="servings" name="servings" class="form-control" type="text" placeholder="Number of Servings" id="servings" />
+    <input  formControlName="servings" name="servings" class="form-control" type="text" placeholder="Number of Servings" id="servings">
     </div>
     <div class="form-group">
         <label for="prepTime">Preparation Time</label>
-    <input  formControlName="prepTime" name="prepTime" class="form-control" type="text" placeholder="Preparation Time" id="prepTime" />
+    <input  formControlName="prepTime"required name="prepTime" class="form-control" type="text" placeholder="Preparation Time" id="prepTime">
     </div>
     
     <div class="form-group">
         <label for="cookTime">Cook Time </label>
-    <input  formControlName="cookTime" name="cookTime" class="form-control" type="text" placeholder="Cook Time" id="cookTime" />
+    <input  formControlName="cookTime"required name="cookTime" class="form-control" type="text" placeholder="Cook Time" id="cookTime" >
     </div>
     <div class="form-group">
         <label for="steps">Steps</label>
-    <textarea  formControlName="steps" name="steps" class="form-control" type="text" placeholder="steps" id="Steps List" ></textarea>
+    <textarea  formControlName="steps" requiredname="steps" class="form-control" type="text" placeholder="steps" id="Steps List" ></textarea>
     </div>
 
     <div class="form-group">
         <label for="tags">Tags </label>
-    <input formControlName="tags" name="tags" class="form-control" type="text" placeholder="dinner pasta veggie" id="tags" />
+    <input formControlName="tags" name="tags" class="form-control" type="text" placeholder="dinner pasta veggie" id="tags" >
     </div>
     
     <div class="form-group">
         <label for="ingredients">Ingredients</label>
-    <textarea  formControlName="ingredients" name="ingredients" class="form-control" type="text" placeholder="Ingredients List" id="ingredients" ></textarea>
+    <textarea  formControlName="ingredients" required  name="ingredients" class="form-control" type="text" placeholder="Ingredients List" id="ingredients" ></textarea>
     </div>
     
     <div class="form-group">
         <label for="description">Description</label>
-        <textarea  formControlName="description" name="description" class="form-control" type="text" placeholder="Description" id="description" ></textarea>
+        <textarea  formControlName="description" required name="description" class="form-control" type="text" placeholder="Description" id="description" ></textarea>
     </div>
 
     <div class="input-group mb-3">

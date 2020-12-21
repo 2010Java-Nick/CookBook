@@ -23,15 +23,15 @@ public CookBook readCookBook(int cookBookId) throws HibernateException;
 	
 	//...WeeklyCookBook.................................................................//
 	
-   public WeeklyCookBook readWeeklyCookBook(int weeklyCookBookId) throws HibernateException;
-	
-	public void createWeeklyweeklyCookBook(WeeklyCookBook weeklyCookBook) throws HibernateException;
-	
-	public List<WeeklyCookBook> readAllWeeklyCookBooks() throws HibernateException;
-	
-	public void updateWeeklyCookBook(WeeklyCookBook weeklyCookBook) throws HibernateException ;
-	
-	public void deleteWeeklyCookBook(int weeklyCookBookId) throws HibernateException;
+//   public WeeklyCookBook readWeeklyCookBook(int weeklyCookBookId) throws HibernateException;
+//	
+//	public void createWeeklyweeklyCookBook(WeeklyCookBook weeklyCookBook) throws HibernateException;
+//	
+//	public List<WeeklyCookBook> readAllWeeklyCookBooks() throws HibernateException;
+//	
+//	public void updateWeeklyCookBook(WeeklyCookBook weeklyCookBook) throws HibernateException ;
+//	
+//	public void deleteWeeklyCookBook(int weeklyCookBookId) throws HibernateException;
 	
 	
 	

@@ -14,8 +14,9 @@ export class ViewCreateRecipeComponent implements OnInit {
 
   //@Input() recipe!:Recipe;
   //recipe={} as Recipe;
-  time={ hour: 1, minute: 30}
+  error='';
   createRecipeForm;
+  valid=true;
 
   constructor(
     private recipeService : ViewARecipeService,
@@ -25,7 +26,7 @@ export class ViewCreateRecipeComponent implements OnInit {
 
   ) { 
     this.createRecipeForm =this.formBuilder.group({
-      name:'',
+      name: '',
       servings: 0,
       prepTime:0,
       cookTime:0,
@@ -38,12 +39,44 @@ export class ViewCreateRecipeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   
+
+    
     
   }
   onSubmit(recipe: Recipe) {
     // Process data here
     //this.createRecipeForm.reset();
-    
+    if (recipe.name==undefined|| recipe.name==''){
+      this.error= ' Enter a name';
+      this.valid=false;
+    }
+    else if(recipe.prepTime<1){
+      this.error= ' Enter preparation time';
+      this.valid=false;
+    }
+    else if(recipe.cookTime<1){
+      this.error= ' Enter cook time';
+      this.valid=false;
+    }
+    else if(recipe.steps==undefined|| recipe.steps==''){
+      this.error= ' Enter steps ';
+      this.valid=false;
+    }
+    else if(recipe.ingredients==undefined|| recipe.ingredients==''){
+      this.error= ' Enter ingredients ';
+      this.valid=false;
+    }
+    else if(recipe.description==undefined|| recipe.description==''){
+      this.error= ' Enter description ';
+      this.valid=false;
+    }
+    else{
+      this.error=' ';
+      console.warn(this.recipeService.createRecipe(recipe));
+      console.warn('Your recipe has been submitted', recipe);
+      this.router.navigate(['/main']);
+    }
     // recipe.name = 'Recsipe' ;
     // recipe.author = '2';
     // recipe.featured = false;
@@ -54,12 +87,8 @@ export class ViewCreateRecipeComponent implements OnInit {
     // recipe.tags = '';
     // recipe.ingredients= '' ;
     // recipe.description = '';
-    //recipe.recipeImage = null;
 
-    console.warn(this.recipeService.createRecipe(recipe));
-    console.warn('Your recipe has been submitted', recipe);
-
-    this.router.navigate(['/recipe']);
+    
 
   }
 }

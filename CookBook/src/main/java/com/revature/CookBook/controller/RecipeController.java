@@ -3,6 +3,8 @@ package com.revature.CookBook.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.revature.CookBook.dto.RecipeDto;
 import com.revature.CookBook.pojos.Recipe;
 import com.revature.CookBook.pojos.User;
@@ -34,19 +36,25 @@ public class RecipeController {
 	}
 
 	@PostMapping("recipe")
-	public void createRecipe(@RequestBody RecipeDto recipeDto) {
-		System.out.println(recipeDto.toString());
+	public boolean createRecipe(@RequestBody RecipeDto recipeDto, HttpServletResponse response) {
 		Recipe recipe = recipeDto.toPojo();
 		User user = userService.readUser(recipeDto.getAuthor());
 		recipe.setUser(user);
-		recipeService.createRecipe(recipe);
-
+		if(recipeService.createRecipe(recipe)) {
+			response.setStatus(201);
+			return true;
+		}
+		else {
+			response.setStatus(400);
+			return false;
+		}
+		
 	}
 
 	@RequestMapping(path = "recipe/{recipeId}", method = RequestMethod.GET)
 	public RecipeDto readRecipe(@PathVariable(name = "recipeId") int recipeId) {
+		
 		Recipe recipe = recipeService.readRecipe(recipeId);
-
 		RecipeDto recipeDto = new RecipeDto(recipe);
 		return recipeDto;
 	}
@@ -67,5 +75,9 @@ public class RecipeController {
 		recipeService.updateRecipe(recipe.toPojo());
 
 	}
+	
+	
+	
+	
 
 }

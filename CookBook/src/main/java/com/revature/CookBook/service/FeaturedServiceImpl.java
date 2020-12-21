@@ -2,15 +2,15 @@ package com.revature.CookBook.service;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.revature.CookBook.daos.FeaturedDao;
 import com.revature.CookBook.dto.RecipeDto;
 import com.revature.CookBook.pojos.Featured;
 import com.revature.CookBook.pojos.Recipe;
 import com.revature.CookBook.pojos.User;
+
+import org.hibernate.HibernateException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class FeaturedServiceImpl implements FeaturedService {
@@ -28,7 +28,7 @@ public class FeaturedServiceImpl implements FeaturedService {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	@Autowired
 	public void setFeaturedDao(FeaturedDao featuredDao) {
 		this.featuredDao = featuredDao;
@@ -54,8 +54,9 @@ public class FeaturedServiceImpl implements FeaturedService {
 		try {
 			recipes = featuredDao.readPendingRecipes();
 
-		} catch (HibernateException e) {}
-		
+		} catch (HibernateException e) {
+		}
+
 		return recipes;
 	}
 
@@ -69,8 +70,8 @@ public class FeaturedServiceImpl implements FeaturedService {
 		boolean success = false;
 
 		try {
-			if (recipeService.updateRecipe(recipe)){
-			
+			if (recipeService.updateRecipe(recipe)) {
+
 				featuredDao.deletePending(recipe);
 				success = true;
 			}

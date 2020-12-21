@@ -32,6 +32,9 @@ public class RecipeDaoHibernateTest {
 	@Autowired
 	private RecipeDao recipeDao;
 	
+	@Autowired
+	private UserDao userDao;	
+	
 	private Recipe recipe;
 	private User user;
 
@@ -46,7 +49,8 @@ public class RecipeDaoHibernateTest {
 	@Before
 	public void setUp() throws Exception {
 	
-		this.user= new User(1, "username", "password", "first", "last", new Authorization(1, "STANDARD"));
+		this.user= new User(4, "username", "password", "first", "last", new Authorization(1, "STANDARD"));
+		
 		this.recipe= new Recipe (1, "recipe name database",user,true, 3, 20, 20, "Steps 1 ,2 3 ,4 ", "tag1,tag2", "ingredient1 ,Ingredient2","description",null);
 	}
 	@After
@@ -97,8 +101,10 @@ public class RecipeDaoHibernateTest {
 	@Test
 	public void createRecipeTest() {
 		Session session;
+		User user= new User(5, "username", "password", "first", "last", new Authorization(1, "STANDARD"));
 		try {			
 			try{
+				userDao.createUser(this.user);
 				recipeDao.createRecipe(this.recipe);
 			}
 			catch (Exception e) {
@@ -109,6 +115,7 @@ public class RecipeDaoHibernateTest {
 				session = sessionFactory.openSession();
 				Transaction tx = session.beginTransaction();
 				session.delete(this.recipe);
+				session.delete(this.user);
 				tx.commit();
 				session.close();
 			}
@@ -125,6 +132,7 @@ public class RecipeDaoHibernateTest {
 			try{
 				session = sessionFactory.openSession();
 				Transaction tx = session.beginTransaction();
+				session.save(this.user);
 				session.save(this.recipe);
 				tx.commit();
 				session.close();
@@ -154,6 +162,7 @@ public class RecipeDaoHibernateTest {
 				session = sessionFactory.openSession();
 				Transaction tx = session.beginTransaction();
 				session.delete(this.recipe);
+				session.delete(this.user);
 				tx.commit();
 				session.close();
 			}
@@ -162,7 +171,7 @@ public class RecipeDaoHibernateTest {
 			}
 		}
 	}
-	
+
 	@Test
 	public void deleteRecipeTest() {
 		Session session;
@@ -170,6 +179,7 @@ public class RecipeDaoHibernateTest {
 			try{
 				session = sessionFactory.openSession();
 				Transaction tx = session.beginTransaction();
+				session.save(this.user);
 				session.save(this.recipe);
 				tx.commit();
 				session.close();
@@ -190,6 +200,7 @@ public class RecipeDaoHibernateTest {
 				session = sessionFactory.openSession();
 				Transaction tx = session.beginTransaction();
 				session.delete(this.recipe);
+				session.delete(this.user);
 				tx.commit();
 				session.close();
 				fail("Object was not properly deleted from Dao call"); 
