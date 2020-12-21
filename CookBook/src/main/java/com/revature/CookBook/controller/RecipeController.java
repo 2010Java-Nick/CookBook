@@ -3,6 +3,8 @@ package com.revature.CookBook.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,24 +37,28 @@ public class RecipeController {
 		this.recipeService = recipeService;
 	}
 
-	// @RequestMapping(path = "recipe", method = RequestMethod.POST)
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("recipe")
-	public void createRecipe(@RequestBody RecipeDto recipeDto) {
+	public boolean createRecipe(@RequestBody RecipeDto recipeDto, HttpServletResponse response) {
 		Recipe recipe = recipeDto.toPojo();
 		User user = userService.readUser(recipeDto.getAuthor());
 		recipe.setUser(user);
-		boolean result = recipeService.createRecipe(recipe);
-		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>(HttpStatus.CREATED);
-
+		if(recipeService.createRecipe(recipe)) {
+			response.setStatus(201);
+			return true;
+		}
+		else {
+			response.setStatus(400);
+			return false;
+		}
+		
 	}
 
 	@RequestMapping(path = "recipe/{recipeId}", method = RequestMethod.GET)
 	public RecipeDto readRecipe(@PathVariable(name = "recipeId") int recipeId) {
+		
 		Recipe recipe = recipeService.readRecipe(recipeId);
-
 		ResponseEntity<RecipeDto> re = new ResponseEntity<RecipeDto>(HttpStatus.OK);
-
 		RecipeDto recipeDto = new RecipeDto(recipe);
 		return recipeDto;
 	}
