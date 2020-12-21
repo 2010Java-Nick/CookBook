@@ -62,19 +62,3 @@ public class AppConfig implements WebApplicationInitializer, WebMvcConfigurer {
 			.allowedMethods("GET", "POST", "PUT", "DELETE");
 	}
 }
-	/*
-	 * @Bean
-	 * 
-	 * @Scope(value = "prototype") public Logger logger(final InjectionPoint ip) {
-	 * return LoggerFactory.getLogger(of(ip.getMethodParameter())
-	 * .<Class>map(MethodParameter::getContainingClass) .orElseGet( () ->
-	 * ofNullable(ip.getField()) .map(Field::getDeclaringClass) .orElseThrow
-	 * (IllegalArgumentException::new))); }
-	 */
-	
-	//Bean wiring
-	/*
-	 * @Bean(autowireCandidate = false) public GuestDao guestDaoHibernate() {
-	 * GuestDaoHibernate guestDao = new GuestDaoHibernate();
-	 * guestDao.setSessionFactory(sessionFactory); return guestDao; }
-	 */
