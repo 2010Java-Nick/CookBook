@@ -39,7 +39,7 @@ export class ViewAccountCreationComponent implements OnInit {
       this.error = '';
       this.accountService.createNewUser(this.user).subscribe(response => {
         if(response) {
-          this.router.navigate(['/main']);
+          this.router.navigate(['/']);
         }
         else {
           this.error = 'Oops! Something went wrong, please try again!';

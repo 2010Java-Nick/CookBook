@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
 
-  { path: '', loadChildren: './landing/landing.module#LandingModule' },
-  { path: 'main', loadChildren: './site/site.module#SiteModule' }
+  { path: 'login', loadChildren: './landing/landing.module#LandingModule' },
+  { path: '', loadChildren: './site/site.module#SiteModule' }
 ];
 
 @NgModule({

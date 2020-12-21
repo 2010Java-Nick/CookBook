@@ -58,7 +58,6 @@ public class AppConfig implements WebApplicationInitializer, WebMvcConfigurer {
 	public void addCorsMappings(CorsRegistry registry) {
 		registry
 			.addMapping("/**")
-			.allowedOrigins("http://104.45.131.181")
 			.allowedMethods("GET", "POST", "PUT", "DELETE");
 	}
 }
