@@ -59,7 +59,7 @@ export class ViewCreateRecipeComponent implements OnInit {
     console.warn(this.recipeService.createRecipe(recipe));
     console.warn('Your recipe has been submitted', recipe);
 
-    this.router.navigate(['/recipe']);
+    this.router.navigate(['/main']);
 
   }
 }
