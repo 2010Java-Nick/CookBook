@@ -22,7 +22,7 @@ export interface Config {
   providedIn: 'root',
 })
 export class ViewARecipeService {
-  private readonly RECIPE_URL = `http://104.45.131.181:9091/recipe`;
+  private readonly RECIPE_URL = `http://localhost:9091/recipe`;
 
   constructor(private httpClient: HttpClient) {}
 

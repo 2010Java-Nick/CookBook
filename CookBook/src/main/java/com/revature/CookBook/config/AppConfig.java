@@ -20,7 +20,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.revature.CookBook.util.SessionFactoryUtil;
 
-//configuration can also be done in a spring-beans.xml file
 @Configuration
 @ComponentScan(value = "com.revature.CookBook")
 @EnableAspectJAutoProxy
@@ -32,6 +31,7 @@ public class AppConfig implements WebApplicationInitializer, WebMvcConfigurer {
 	
 	@Override
 	public void onStartup(ServletContext container) {
+
 		//create the 'root' Spring Application Context
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
 		rootContext.register(AppConfig.class);
