@@ -2,7 +2,6 @@ package com.revature.CookBook.dto;
 
 
 import com.revature.CookBook.pojos.Recipe;
-import com.revature.CookBook.pojos.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

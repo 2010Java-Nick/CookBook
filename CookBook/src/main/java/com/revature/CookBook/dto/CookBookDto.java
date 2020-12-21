@@ -15,6 +15,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CookBookDto implements Dto<CookBook>{
 	
+	private int id;
+	
 	private String name;
 	
 	private String author;
@@ -23,14 +25,13 @@ public class CookBookDto implements Dto<CookBook>{
 	
 	private byte[] coverImage;
 	
-	//private RecipeDto[] recipes;
-	
 	private List<RecipeDto> recipeDtos;
 		
 
 	public CookBookDto(CookBook cookBook) {
 		super();
 		this.name = cookBook.getName();
+		this.id = cookBook.getCookBookId();
 		this.author = cookBook.getUser().getUsername();
 		this.featured = cookBook.isFeatured();
 		this.coverImage = cookBook.getCoverImage();
@@ -52,6 +53,7 @@ public class CookBookDto implements Dto<CookBook>{
 	@Override
 	public CookBook toPojo() {
 		CookBook cookBook = new CookBook();
+		cookBook.setCookBookId(this.getId());
 		cookBook.setName(this.getName());
 		cookBook.setFeatured(this.isFeatured());
 		cookBook.setCoverImage(this.getCoverImage());
