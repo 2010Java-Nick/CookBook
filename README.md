@@ -41,3 +41,17 @@ CookBook will curate a featured recipe daily out of the cookbook of the week.Thi
 A recipe can only be featured one day out of the week. Once a recipe has been featured, it cannot be featured again until the following week. 
 If a recipe is featured by an affiliate user, it cannot be selected for recipe of the day. 
 The selected recipe of the day will be chosen by an automated system.
+
+## Technologies Used
+Java, Apache Tomcat Server, Spring, Hibernate, Angular, Bootstrap
+
+## Features
+Users can create an account, create their own recipes stored in CookBooks, and search for a specific recipe throughout the site.
+This app also allows moderators to accept or decline a recipe.
+
+## To-Do List
+Finish landing page to include log-in and user authentication.
+Finish Cookbook creation capabilities. 
+Build capability for Users to add recipes to their favorites/cookbook.
+Allow users to rate a recipe. 
+
