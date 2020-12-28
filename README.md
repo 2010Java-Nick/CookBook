@@ -46,7 +46,8 @@ The selected recipe of the day will be chosen by an automated system.
 Java, Apache Tomcat Server, Spring, Hibernate, Angular, Bootstrap
 
 ## Features
-Users can create an account, create their own recipes stored in CookBooks, and search for a specific recipe throughout the site.
+Users can create an account, create their own recipes stored in CookBooks
+Users can search for a specific recipe throughout the site.
 This app also allows moderators to accept or decline a recipe.
 
 ## To-Do List
@@ -54,4 +55,11 @@ Finish landing page to include log-in and user authentication.
 Finish Cookbook creation capabilities. 
 Build capability for Users to add recipes to their favorites/cookbook.
 Allow users to rate a recipe. 
+
+##Set-up
+Clone repo
+Pull all dependencies with gradle and npm
+Connect backend to database by configuring environment variables
+Start Tomcat server using preferred IDE
+Serve Angular application using ng serve
 
