@@ -56,7 +56,7 @@ Finish Cookbook creation capabilities.
 Build capability for Users to add recipes to their favorites/cookbook.
 Allow users to rate a recipe. 
 
-##Set-up
+## Set-up
 Clone repo
 Pull all dependencies with gradle and npm
 Connect backend to database by configuring environment variables
